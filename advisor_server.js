@@ -13,6 +13,8 @@ const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "llama3.1:8b";
 const OPENAI_API_KEY = cleanText(process.env.OPENAI_API_KEY || "");
 const OPENAI_MODEL = cleanText(process.env.OPENAI_MODEL || "gpt-5-mini");
 const LLM_PROVIDER = normalizeProvider(process.env.ADVISOR_LLM_PROVIDER || "auto");
+const ADVISOR_AUTH_USER = cleanText(process.env.ADVISOR_AUTH_USER || "");
+const ADVISOR_AUTH_PASSWORD = cleanText(process.env.ADVISOR_AUTH_PASSWORD || "");
 const BODY_LIMIT_BYTES = 2_000_000;
 const FAST_MODE_DEFAULT = String(process.env.ADVISOR_FAST_MODE || "").toLowerCase() === "1";
 const DEFAULT_PRECISION_MODE = normalizePrecisionMode(process.env.ADVISOR_PRECISION_MODE || "high");
@@ -39,6 +41,10 @@ const server = http.createServer(async (req, res) => {
   pruneSessionStore();
   if (req.method === "OPTIONS") {
     sendJson(res, 204, {});
+    return;
+  }
+  if (isAuthEnabled() && !isAuthorizedRequest(req)) {
+    sendAuthRequired(res);
     return;
   }
   if (req.method === "GET" && url.pathname === "/health") {
@@ -1723,6 +1729,51 @@ function listDebugTraces(limit = 20, full = false) {
   }));
 }
 
+function isAuthEnabled() {
+  return !!(ADVISOR_AUTH_USER && ADVISOR_AUTH_PASSWORD);
+}
+
+function isAuthorizedRequest(req) {
+  if (!isAuthEnabled()) return true;
+  const header = cleanText(req?.headers?.authorization || "");
+  if (!header || !/^basic\s+/i.test(header)) return false;
+  const token = header.replace(/^basic\s+/i, "").trim();
+  if (!token) return false;
+  let decoded = "";
+  try {
+    decoded = Buffer.from(token, "base64").toString("utf8");
+  } catch {
+    return false;
+  }
+  const idx = decoded.indexOf(":");
+  if (idx <= 0) return false;
+  const user = decoded.slice(0, idx);
+  const pass = decoded.slice(idx + 1);
+  return secureCompare(user, ADVISOR_AUTH_USER) && secureCompare(pass, ADVISOR_AUTH_PASSWORD);
+}
+
+function secureCompare(a, b) {
+  const left = Buffer.from(String(a || ""), "utf8");
+  const right = Buffer.from(String(b || ""), "utf8");
+  if (left.length !== right.length) return false;
+  try {
+    return crypto.timingSafeEqual(left, right);
+  } catch {
+    return false;
+  }
+}
+
+function sendAuthRequired(res) {
+  const body = JSON.stringify({ ok: false, error: "Autenticacion requerida." });
+  res.statusCode = 401;
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.setHeader("WWW-Authenticate", 'Basic realm="Analizador Financiero", charset="UTF-8"');
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  res.end(body);
+}
+
 function normalizeProvider(value) {
   const t = cleanText(value || "").toLowerCase();
   if (t === "openai" || t === "ollama") return t;
@@ -1740,6 +1791,7 @@ function getServerConfigSummary() {
     provider: effectiveProvider(),
     model: activeModel,
     openai_enabled: !!OPENAI_API_KEY,
+    auth_enabled: isAuthEnabled(),
     requires_client_api_keys: false,
     centralized_memory: true,
     session_ttl_ms: SESSION_TTL_MS,
