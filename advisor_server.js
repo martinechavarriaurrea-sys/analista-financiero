@@ -230,6 +230,10 @@ const server = http.createServer(async (req, res) => {
       return;
     }
   }
+  if (req.method === "GET" && shouldServeStaticPath(url.pathname)) {
+    const served = await serveStaticFile(url.pathname, res);
+    if (served) return;
+  }
   sendJson(res, 404, { error: "Ruta no encontrada." });
 });
 
@@ -1899,6 +1903,53 @@ function persistSessionStore() {
   } catch (error) {
     console.warn("[advisor] No se pudo persistir sesiones:", cleanText(error?.message || error));
   }
+}
+
+function shouldServeStaticPath(pathname) {
+  const p = cleanText(pathname || "");
+  if (!p) return true;
+  if (p === "/health") return false;
+  if (p.startsWith("/api/")) return false;
+  return true;
+}
+
+async function serveStaticFile(pathname, res) {
+  const root = path.resolve(process.cwd());
+  let reqPath = decodeURIComponent(cleanText(pathname || "/"));
+  if (!reqPath || reqPath === "/") reqPath = "/index.html";
+  if (reqPath.endsWith("/")) reqPath = `${reqPath}index.html`;
+  if (reqPath.includes("\0")) return false;
+
+  const rel = reqPath.replace(/^\/+/, "");
+  const abs = path.resolve(root, rel);
+  if (!abs.startsWith(root)) return false;
+
+  try {
+    const st = await fs.promises.stat(abs);
+    if (!st.isFile()) return false;
+    const data = await fs.promises.readFile(abs);
+    res.statusCode = 200;
+    res.setHeader("Content-Type", contentTypeForFile(abs));
+    res.setHeader("Cache-Control", rel === "index.html" ? "no-cache" : "public, max-age=300");
+    res.end(data);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function contentTypeForFile(filePath) {
+  const ext = path.extname(cleanText(filePath || "")).toLowerCase();
+  if (ext === ".html") return "text/html; charset=utf-8";
+  if (ext === ".js" || ext === ".mjs") return "application/javascript; charset=utf-8";
+  if (ext === ".css") return "text/css; charset=utf-8";
+  if (ext === ".json") return "application/json; charset=utf-8";
+  if (ext === ".svg") return "image/svg+xml";
+  if (ext === ".png") return "image/png";
+  if (ext === ".jpg" || ext === ".jpeg") return "image/jpeg";
+  if (ext === ".ico") return "image/x-icon";
+  if (ext === ".txt" || ext === ".md") return "text/plain; charset=utf-8";
+  return "application/octet-stream";
 }
 
 function cleanMultilineText(value) {
