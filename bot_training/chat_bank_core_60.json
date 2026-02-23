@@ -1,0 +1,3122 @@
+[
+  {
+    "chat_id": "CHAT-001",
+    "title": "Ventas y crecimiento YoY",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como crecieron los ingresos en los ultimos 6 anos?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Mostrar crecimiento YoY por ano y CAGR 6 anos con formula y lectura de anos pico/valle."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Ese crecimiento fue por precio o volumen?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Descomponer variacion de ingresos en precio, volumen y mix; si faltan drivers usar proxy de ticket y unidades."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que accion recomiendas para sostener crecimiento sin destruir margen?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Priorizar disciplina de precios, mix de mayor margen y control de descuentos; KPI objetivo: margen bruto por canal."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "growth",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-002",
+    "title": "Margen bruto: caida fuerte",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "El margen bruto cayo en 2024, por que?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar margen bruto 2024 vs 2023 y drivers: TRM, fletes, mix, mermas y costo unitario."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Cual driver explica el 80% de la caida?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Construir puente de margen con contribucion porcentual por driver."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que harias primero en 30 dias?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Quick wins: renegociar proveedores, corregir descuentos y ajustar precios por elasticidad."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "profitability",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-003",
+    "title": "OPEX inflandose",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Por que los gastos operacionales crecen mas que ventas?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar OPEX/Ingresos por ano y detectar rubros creciendo por encima de ventas."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que rubros son recortables sin afectar operacion?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Clasificar OPEX en run, growth y compliance con impacto/riesgo."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Dame meta razonable de OPEX/Ingresos."
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Definir banda objetivo por historico, comparables del portal y eficiencia incremental anual."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "profitability",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-004",
+    "title": "EBITDA vs caja",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Tenemos EBITDA positivo pero caja cae. Que pasa?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Reconciliar EBITDA a caja operativa: impuestos, capital de trabajo y ajustes."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que rubro de capital de trabajo se come la caja?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Descomponer en CxC, inventario y CxP con impacto en COP y en dias."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que plan de choque propones para liberar caja?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan 90 dias: bajar DSO/DIH y optimizar DPO, con meta explicita de CCC y caja liberada."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-005",
+    "title": "DSO alto",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Cuales son los dias de cartera y como evolucionaron?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Calcular DSO por ano y alertar cambios bruscos."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que clientes causan el problema?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Usar aging por vencimientos y ranking por saldo vencido y concentracion."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Bajari as cupo o subirias precio por riesgo?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Aplicar politica por mora y cobertura: cupo/garantias o precio por riesgo segun criticidad."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-006",
+    "title": "Inventario lento",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "El inventario esta creciendo demasiado?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Calcular DIH y variacion por ano con alerta de obsolescencia."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que SKUs son lentos?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Clasificar inventario con ABC/XYZ o aging."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Como bajamos DIH sin romper servicio?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan de surtido: liquidar lento, ajustar MOQ y forecast con demanda real."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-007",
+    "title": "Deuda y covenants",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como esta el apalancamiento?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Evaluar deuda neta/EBITDA y coberturas con tendencia anual."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Estamos cerca de romper covenants?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Comparar metricas con umbrales y simular estres moderado."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Refinanciar o prepagar?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Decidir por costo marginal, liquidez minima y retorno ajustado por riesgo."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-008",
+    "title": "Impacto de tasa",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Si sube IBR 300 bps, que pasa?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Estimar incremento de intereses sobre deuda variable e impacto en utilidad y cobertura."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Como nos protegemos?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Evaluar mezcla tasa fija, derivados, prepago parcial y extension de plazo."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Cual conviene hoy?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Escoger segun vencimientos, costo total y capacidad de caja."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-009",
+    "title": "Riesgo TRM",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Que tan expuestos estamos a devaluacion 15%?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Cuantificar impacto en COGS importado, deuda en USD e ingresos en USD."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Cual es la exposicion neta?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Calcular net exposure: costos USD + deuda USD - ingresos USD."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que cobertura recomiendas?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Si exposicion neta alta: forwards escalonados, ajuste de precios y renegociacion."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "debt_risk",
+    "source_expected": "interno+portal",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-010",
+    "title": "Normalizacion de EBITDA",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Quiero EBITDA normalizado para valuacion."
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Ajustar EBITDA reportado por one-offs no recurrentes."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que criterio usas para one-off?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Validar no recurrencia, no operatividad y soporte en notas/portal."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que multiplo EV/EBITDA usarias?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Usar comparables sectoriales del portal o rango con sensibilidad explicita."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "valuation",
+    "source_expected": "interno+portal",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-011",
+    "title": "Decision de credito",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Le doy credito a esta empresa?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Calificar por rentabilidad, caja, leverage y pago; entregar rating interno."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que condiciones pondrias?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Definir cupo, plazo, garantias y covenants comerciales."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que senales monitorear mensual?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Monitorear DSO, mora >60, margen bruto, caja minima, deuda/EBITDA y cobertura."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "credit_decision",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-012",
+    "title": "Gap vs comparables",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como estamos vs empresas similares del portal?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar margenes, CCC, leverage y crecimiento con percentiles si aplica."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Donde estamos peor?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Identificar 2-3 brechas con impacto financiero."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Plan para cerrar brechas en 6 meses?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Roadmap mensual con iniciativa, responsable y KPI de cierre."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "external_benchmark",
+    "source_expected": "interno+portal",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-013",
+    "title": "Flujo libre FCF",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Cual fue el FCF en los ultimos 6 anos?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Calcular FCF aproximado por ano y tendencia."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Por que fue negativo en un ano?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Separar causa entre CAPEX, capital de trabajo o caida EBITDA."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Eso es malo o crecimiento?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Distinguir FCF negativo saludable (inversion) vs peligroso (descontrol operativo)."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-014",
+    "title": "CAPEX vs OPEX",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Que gastos deberian ser CAPEX y no OPEX?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Identificar rubros potencialmente capitalizables segun criterio contable."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que cambia en EBITDA?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Explicar efecto en EBITDA, D&A y caja."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Recomiendas cambiar politica?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Solo con soporte tecnico y consistencia; sino mantener y normalizar para analisis."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "accounting_policy",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-015",
+    "title": "Otros ingresos grandes",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Otros ingresos es gigante, que es?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Desagregar otros y separar recurrente vs no recurrente."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Si lo quito, como queda la operacion?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Presentar estado de resultados core sin partidas no operativas."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que riesgo concluyes?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Si la utilidad depende de otros, subir cautela por baja calidad de utilidades."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "quality_of_earnings",
+    "source_expected": "interno+portal",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-016",
+    "title": "Impuestos tasa efectiva",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "La tasa efectiva de impuestos es muy baja en un ano. Es raro?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Explicar tasa efectiva y posibles causas: diferidos, beneficios, perdidas fiscales."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Como lo verificas?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Revisar notas y conciliacion fiscal; si falta soporte marcarlo."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que tasa usarias para proyeccion?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Usar tasa normalizada por regimen y promedio historico ajustado."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "net_income_tax",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-017",
+    "title": "Puente EBITDA",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Haz un puente EBITDA 2023 a 2024."
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Descomponer por precio, volumen, mix, COGS unitario y OPEX."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que palanca tiene mejor ROI?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Comparar ROI estimado de palancas por impacto/costo."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Prioriza 3 acciones."
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Ordenar acciones por ROI y riesgo de ejecucion."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "profitability",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-018",
+    "title": "Stress test de caja",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Simula ventas -20% y si sobrevivimos 6 meses."
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Modelar impacto en EBITDA, CT, servicio de deuda y runway."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que variable mata primero?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Identificar constraint principal: cobertura, caja minima o DSO."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Plan de contingencia?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Activar plan de defensa: CAPEX, OPEX, deuda y cobranza."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "scenario",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-019",
+    "title": "Pricing",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Podemos subir precios 5% sin perder EBITDA?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Estimar impacto neto considerando elasticidad y volumen."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "En que segmentos si y en cuales no?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Segmentar clientes por sensibilidad y valor."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Como implemento?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan por SKU, reglas de descuento y comite de precios con seguimiento semanal."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "growth",
+    "source_expected": "interno",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-020",
+    "title": "Confiabilidad interno vs portal",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "El portal me da ingresos distintos a los mios. Cual creo?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Conciliar diferencias por rubro y ano; interno como fuente para decision."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Como se explican diferencias tipicas?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Explicar consolidacion, reclasificacion, corte y redondeo."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Como lo dejamos consistente?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Definir source of truth, mapeo de cuentas y politica de conciliacion."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "external_benchmark",
+    "source_expected": "interno+portal",
+    "template_family": "core20",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-021",
+    "title": "Z-Score - tendencia",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como evoluciona Z-Score en los ultimos 6 anos?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Mostrar tendencia anual y formula base (Z-Score de Altman) con lectura de senales."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que variable explica mas el cambio de Z-Score?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Descomponer drivers y cuantificar contribucion de cada uno."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que decision ejecutiva tomarias para mejorar Z-Score?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Recomendar 3 acciones priorizadas para mejorar solvencia operativa y capital de trabajo."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-022",
+    "title": "Z-Score - estres",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Si estresamos Z-Score, cual es el impacto financiero?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Aplicar stress moderado y recalcular Z-Score usando Z-Score de Altman."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que umbral dispara alerta roja?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Definir trigger y sensibilidad de KPI criticos."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que mitigantes activas primero?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Entregar playbook de mitigacion en 30-90 dias."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-023",
+    "title": "Z-Score - benchmark",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como estamos en Z-Score frente a comparables?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar valor interno vs portal y brecha relativa."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Cual es la causa principal de la brecha?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Explicar causa operativa/financiera con evidencia disponible."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que plan 6 meses propones para cerrar brecha?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan con meta mensual, responsable y KPI."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-024",
+    "title": "Z-Score - decision",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Que decision de credito o inversion sugiere Z-Score?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Dar recomendacion preliminar con condiciones."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que informacion faltaria para confirmar?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Listar faltantes minimos y proxy permitido."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Cual seria tu checklist final de aprobacion?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Checklist con triggers de rechazo y mitigantes."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-025",
+    "title": "DSCR - tendencia",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como evoluciona DSCR en los ultimos 6 anos?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Mostrar tendencia anual y formula base (DSCR = flujo para deuda / servicio deuda) con lectura de senales."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que variable explica mas el cambio de DSCR?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Descomponer drivers y cuantificar contribucion de cada uno."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que decision ejecutiva tomarias para mejorar DSCR?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Recomendar 3 acciones priorizadas para reperfilar deuda y blindar caja."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-026",
+    "title": "DSCR - estres",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Si estresamos DSCR, cual es el impacto financiero?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Aplicar stress moderado y recalcular DSCR usando DSCR = flujo para deuda / servicio deuda."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que umbral dispara alerta roja?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Definir trigger y sensibilidad de KPI criticos."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que mitigantes activas primero?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Entregar playbook de mitigacion en 30-90 dias."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-027",
+    "title": "DSCR - benchmark",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como estamos en DSCR frente a comparables?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar valor interno vs portal y brecha relativa."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Cual es la causa principal de la brecha?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Explicar causa operativa/financiera con evidencia disponible."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que plan 6 meses propones para cerrar brecha?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan con meta mensual, responsable y KPI."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-028",
+    "title": "DSCR - decision",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Que decision de credito o inversion sugiere DSCR?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Dar recomendacion preliminar con condiciones."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que informacion faltaria para confirmar?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Listar faltantes minimos y proxy permitido."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Cual seria tu checklist final de aprobacion?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Checklist con triggers de rechazo y mitigantes."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-029",
+    "title": "Factoring - tendencia",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como evoluciona Factoring en los ultimos 6 anos?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Mostrar tendencia anual y formula base (costo efectivo factoring vs tasa deuda) con lectura de senales."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que variable explica mas el cambio de Factoring?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Descomponer drivers y cuantificar contribucion de cada uno."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que decision ejecutiva tomarias para mejorar Factoring?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Recomendar 3 acciones priorizadas para usar factoring solo tactico y con limite."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-030",
+    "title": "Factoring - estres",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Si estresamos Factoring, cual es el impacto financiero?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Aplicar stress moderado y recalcular Factoring usando costo efectivo factoring vs tasa deuda."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que umbral dispara alerta roja?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Definir trigger y sensibilidad de KPI criticos."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que mitigantes activas primero?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Entregar playbook de mitigacion en 30-90 dias."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-031",
+    "title": "Factoring - benchmark",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como estamos en Factoring frente a comparables?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar valor interno vs portal y brecha relativa."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Cual es la causa principal de la brecha?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Explicar causa operativa/financiera con evidencia disponible."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que plan 6 meses propones para cerrar brecha?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan con meta mensual, responsable y KPI."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-032",
+    "title": "Factoring - decision",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Que decision de credito o inversion sugiere Factoring?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Dar recomendacion preliminar con condiciones."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que informacion faltaria para confirmar?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Listar faltantes minimos y proxy permitido."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Cual seria tu checklist final de aprobacion?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Checklist con triggers de rechazo y mitigantes."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-033",
+    "title": "Presupuesto vs real - tendencia",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como evoluciona Presupuesto vs real en los ultimos 6 anos?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Mostrar tendencia anual y formula base (variacion = real - presupuesto) con lectura de senales."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que variable explica mas el cambio de Presupuesto vs real?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Descomponer drivers y cuantificar contribucion de cada uno."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que decision ejecutiva tomarias para mejorar Presupuesto vs real?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Recomendar 3 acciones priorizadas para cerrar brechas con plan por responsables."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "planning",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-034",
+    "title": "Presupuesto vs real - estres",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Si estresamos Presupuesto vs real, cual es el impacto financiero?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Aplicar stress moderado y recalcular Presupuesto vs real usando variacion = real - presupuesto."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que umbral dispara alerta roja?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Definir trigger y sensibilidad de KPI criticos."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que mitigantes activas primero?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Entregar playbook de mitigacion en 30-90 dias."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "planning",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-035",
+    "title": "Presupuesto vs real - benchmark",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como estamos en Presupuesto vs real frente a comparables?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar valor interno vs portal y brecha relativa."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Cual es la causa principal de la brecha?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Explicar causa operativa/financiera con evidencia disponible."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que plan 6 meses propones para cerrar brecha?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan con meta mensual, responsable y KPI."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "planning",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-036",
+    "title": "Presupuesto vs real - decision",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Que decision de credito o inversion sugiere Presupuesto vs real?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Dar recomendacion preliminar con condiciones."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que informacion faltaria para confirmar?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Listar faltantes minimos y proxy permitido."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Cual seria tu checklist final de aprobacion?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Checklist con triggers de rechazo y mitigantes."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "planning",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-037",
+    "title": "Unit economics - tendencia",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como evoluciona Unit economics en los ultimos 6 anos?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Mostrar tendencia anual y formula base (margen contribucion por unidad) con lectura de senales."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que variable explica mas el cambio de Unit economics?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Descomponer drivers y cuantificar contribucion de cada uno."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que decision ejecutiva tomarias para mejorar Unit economics?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Recomendar 3 acciones priorizadas para ajustar mix y pricing por unidad rentable."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "profitability",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-038",
+    "title": "Unit economics - estres",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Si estresamos Unit economics, cual es el impacto financiero?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Aplicar stress moderado y recalcular Unit economics usando margen contribucion por unidad."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que umbral dispara alerta roja?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Definir trigger y sensibilidad de KPI criticos."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que mitigantes activas primero?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Entregar playbook de mitigacion en 30-90 dias."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "profitability",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-039",
+    "title": "Unit economics - benchmark",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como estamos en Unit economics frente a comparables?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar valor interno vs portal y brecha relativa."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Cual es la causa principal de la brecha?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Explicar causa operativa/financiera con evidencia disponible."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que plan 6 meses propones para cerrar brecha?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan con meta mensual, responsable y KPI."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "profitability",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-040",
+    "title": "Unit economics - decision",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Que decision de credito o inversion sugiere Unit economics?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Dar recomendacion preliminar con condiciones."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que informacion faltaria para confirmar?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Listar faltantes minimos y proxy permitido."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Cual seria tu checklist final de aprobacion?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Checklist con triggers de rechazo y mitigantes."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "profitability",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-041",
+    "title": "Canales - tendencia",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como evoluciona Canales en los ultimos 6 anos?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Mostrar tendencia anual y formula base (margen por canal y crecimiento por canal) con lectura de senales."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que variable explica mas el cambio de Canales?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Descomponer drivers y cuantificar contribucion de cada uno."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que decision ejecutiva tomarias para mejorar Canales?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Recomendar 3 acciones priorizadas para mover foco al canal de mayor retorno."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "growth",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-042",
+    "title": "Canales - estres",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Si estresamos Canales, cual es el impacto financiero?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Aplicar stress moderado y recalcular Canales usando margen por canal y crecimiento por canal."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que umbral dispara alerta roja?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Definir trigger y sensibilidad de KPI criticos."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que mitigantes activas primero?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Entregar playbook de mitigacion en 30-90 dias."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "growth",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-043",
+    "title": "Canales - benchmark",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como estamos en Canales frente a comparables?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar valor interno vs portal y brecha relativa."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Cual es la causa principal de la brecha?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Explicar causa operativa/financiera con evidencia disponible."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que plan 6 meses propones para cerrar brecha?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan con meta mensual, responsable y KPI."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "growth",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-044",
+    "title": "Canales - decision",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Que decision de credito o inversion sugiere Canales?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Dar recomendacion preliminar con condiciones."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que informacion faltaria para confirmar?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Listar faltantes minimos y proxy permitido."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Cual seria tu checklist final de aprobacion?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Checklist con triggers de rechazo y mitigantes."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "growth",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-045",
+    "title": "ROIC vs WACC - tendencia",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como evoluciona ROIC vs WACC en los ultimos 6 anos?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Mostrar tendencia anual y formula base (spread = ROIC - WACC) con lectura de senales."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que variable explica mas el cambio de ROIC vs WACC?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Descomponer drivers y cuantificar contribucion de cada uno."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que decision ejecutiva tomarias para mejorar ROIC vs WACC?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Recomendar 3 acciones priorizadas para reasignar capital a proyectos con spread positivo."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "valuation",
+    "source_expected": "interno+portal",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-046",
+    "title": "ROIC vs WACC - estres",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Si estresamos ROIC vs WACC, cual es el impacto financiero?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Aplicar stress moderado y recalcular ROIC vs WACC usando spread = ROIC - WACC."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que umbral dispara alerta roja?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Definir trigger y sensibilidad de KPI criticos."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que mitigantes activas primero?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Entregar playbook de mitigacion en 30-90 dias."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "valuation",
+    "source_expected": "interno+portal",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-047",
+    "title": "ROIC vs WACC - benchmark",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como estamos en ROIC vs WACC frente a comparables?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar valor interno vs portal y brecha relativa."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Cual es la causa principal de la brecha?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Explicar causa operativa/financiera con evidencia disponible."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que plan 6 meses propones para cerrar brecha?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan con meta mensual, responsable y KPI."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "valuation",
+    "source_expected": "interno+portal",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-048",
+    "title": "ROIC vs WACC - decision",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Que decision de credito o inversion sugiere ROIC vs WACC?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Dar recomendacion preliminar con condiciones."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que informacion faltaria para confirmar?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Listar faltantes minimos y proxy permitido."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Cual seria tu checklist final de aprobacion?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Checklist con triggers de rechazo y mitigantes."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "valuation",
+    "source_expected": "interno+portal",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-049",
+    "title": "Mora y riesgo cliente - tendencia",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como evoluciona Mora y riesgo cliente en los ultimos 6 anos?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Mostrar tendencia anual y formula base (aging y cobertura de cartera) con lectura de senales."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que variable explica mas el cambio de Mora y riesgo cliente?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Descomponer drivers y cuantificar contribucion de cada uno."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que decision ejecutiva tomarias para mejorar Mora y riesgo cliente?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Recomendar 3 acciones priorizadas para ajustar cupos y garantias."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "credit_decision",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-050",
+    "title": "Mora y riesgo cliente - estres",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Si estresamos Mora y riesgo cliente, cual es el impacto financiero?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Aplicar stress moderado y recalcular Mora y riesgo cliente usando aging y cobertura de cartera."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que umbral dispara alerta roja?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Definir trigger y sensibilidad de KPI criticos."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que mitigantes activas primero?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Entregar playbook de mitigacion en 30-90 dias."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "credit_decision",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-051",
+    "title": "Mora y riesgo cliente - benchmark",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como estamos en Mora y riesgo cliente frente a comparables?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar valor interno vs portal y brecha relativa."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Cual es la causa principal de la brecha?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Explicar causa operativa/financiera con evidencia disponible."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que plan 6 meses propones para cerrar brecha?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan con meta mensual, responsable y KPI."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "credit_decision",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-052",
+    "title": "Mora y riesgo cliente - decision",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Que decision de credito o inversion sugiere Mora y riesgo cliente?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Dar recomendacion preliminar con condiciones."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que informacion faltaria para confirmar?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Listar faltantes minimos y proxy permitido."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Cual seria tu checklist final de aprobacion?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Checklist con triggers de rechazo y mitigantes."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "credit_decision",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-053",
+    "title": "CAPEX de mantenimiento - tendencia",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como evoluciona CAPEX de mantenimiento en los ultimos 6 anos?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Mostrar tendencia anual y formula base (FCF despues de CAPEX minimo) con lectura de senales."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que variable explica mas el cambio de CAPEX de mantenimiento?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Descomponer drivers y cuantificar contribucion de cada uno."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que decision ejecutiva tomarias para mejorar CAPEX de mantenimiento?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Recomendar 3 acciones priorizadas para priorizar CAPEX critico y diferir no esencial."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-054",
+    "title": "CAPEX de mantenimiento - estres",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Si estresamos CAPEX de mantenimiento, cual es el impacto financiero?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Aplicar stress moderado y recalcular CAPEX de mantenimiento usando FCF despues de CAPEX minimo."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que umbral dispara alerta roja?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Definir trigger y sensibilidad de KPI criticos."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que mitigantes activas primero?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Entregar playbook de mitigacion en 30-90 dias."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-055",
+    "title": "CAPEX de mantenimiento - benchmark",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como estamos en CAPEX de mantenimiento frente a comparables?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar valor interno vs portal y brecha relativa."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Cual es la causa principal de la brecha?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Explicar causa operativa/financiera con evidencia disponible."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que plan 6 meses propones para cerrar brecha?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan con meta mensual, responsable y KPI."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-056",
+    "title": "CAPEX de mantenimiento - decision",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Que decision de credito o inversion sugiere CAPEX de mantenimiento?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Dar recomendacion preliminar con condiciones."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que informacion faltaria para confirmar?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Listar faltantes minimos y proxy permitido."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Cual seria tu checklist final de aprobacion?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Checklist con triggers de rechazo y mitigantes."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-057",
+    "title": "Sensibilidad de utilidad - tendencia",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como evoluciona Sensibilidad de utilidad en los ultimos 6 anos?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Mostrar tendencia anual y formula base (impacto de escenario en EBITDA/utilidad/caja) con lectura de senales."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que variable explica mas el cambio de Sensibilidad de utilidad?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Descomponer drivers y cuantificar contribucion de cada uno."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que decision ejecutiva tomarias para mejorar Sensibilidad de utilidad?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Recomendar 3 acciones priorizadas para activar gatillos por escenario."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "scenario",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-058",
+    "title": "Sensibilidad de utilidad - estres",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Si estresamos Sensibilidad de utilidad, cual es el impacto financiero?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Aplicar stress moderado y recalcular Sensibilidad de utilidad usando impacto de escenario en EBITDA/utilidad/caja."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que umbral dispara alerta roja?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Definir trigger y sensibilidad de KPI criticos."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que mitigantes activas primero?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Entregar playbook de mitigacion en 30-90 dias."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "scenario",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-059",
+    "title": "Sensibilidad de utilidad - benchmark",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Como estamos en Sensibilidad de utilidad frente a comparables?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Comparar valor interno vs portal y brecha relativa."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Cual es la causa principal de la brecha?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Explicar causa operativa/financiera con evidencia disponible."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Que plan 6 meses propones para cerrar brecha?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Plan con meta mensual, responsable y KPI."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "scenario",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  },
+  {
+    "chat_id": "CHAT-060",
+    "title": "Sensibilidad de utilidad - decision",
+    "context": {
+      "company_scope": "empresa + 6 anos + portal",
+      "anti_hallucination_rule": "Si falta dato interno y portal no lo trae, responder: 'Dato no disponible', indicar faltante exacto y proxy recomendado."
+    },
+    "turns": [
+      {
+        "id": "U1",
+        "role": "user",
+        "text": "Que decision de credito o inversion sugiere Sensibilidad de utilidad?"
+      },
+      {
+        "id": "B1",
+        "role": "assistant",
+        "expected": "Dar recomendacion preliminar con condiciones."
+      },
+      {
+        "id": "U2",
+        "role": "user",
+        "text": "Que informacion faltaria para confirmar?"
+      },
+      {
+        "id": "B2",
+        "role": "assistant",
+        "expected": "Listar faltantes minimos y proxy permitido."
+      },
+      {
+        "id": "U3",
+        "role": "user",
+        "text": "Cual seria tu checklist final de aprobacion?"
+      },
+      {
+        "id": "B3",
+        "role": "assistant",
+        "expected": "Checklist con triggers de rechazo y mitigantes."
+      }
+    ],
+    "response_contract": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato interno y portal no lo trae: 'Dato no disponible' + faltante + proxy recomendado"
+    },
+    "type": "scenario",
+    "source_expected": "interno",
+    "template_family": "core_extra40",
+    "variables": {}
+  }
+]

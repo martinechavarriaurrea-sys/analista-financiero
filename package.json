@@ -1,0 +1,40 @@
+{
+  "name": "trabajo-automatizacion-aprendizaje",
+  "version": "1.0.0",
+  "description": "Aplicacion de escritorio en Python para analizar empresas colombianas consultando: - Busqueda oficial en Supersociedades (`superwas.supersociedades.gov.co`) por NIT o razon social. - Estados financieros NIIF oficiales publicados en `datos.gov.co` (Superintendencia de Sociedades).",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node advisor_server.js",
+    "test": "node --test qa_tests/*.test.js",
+    "test:qa": "node --test qa_tests/*.test.js",
+    "test:qa:coverage": "c8 --reporter=text --reporter=json-summary node --test qa_tests/*.test.js",
+    "advisor:start": "node advisor_server.js",
+    "advisor:health": "node -e \"fetch('http://127.0.0.1:8787/health').then(r=>r.text()).then(t=>console.log(t)).catch(e=>{console.error(e.message);process.exit(1);})\"",
+    "bot:question-bank": "node scripts/build_bot_question_bank_1000.mjs",
+    "bot:chat-bank": "node scripts/build_bot_chat_bank_1000.mjs",
+    "bot:owner-bank": "node scripts/build_owner_question_bank.mjs",
+    "bot:stress": "node scripts/stress_test_bot_1000x2.mjs",
+    "bot:stress:5": "node scripts/stress_test_bot_1000x2.mjs",
+    "bot:stress:chat": "node scripts/stress_test_chatbank_1000x5.mjs",
+    "bot:stress:owner": "node scripts/stress_test_owner_bank_300x5.mjs",
+    "qa:deuda-ebitda": "node scripts/check_deuda_ebitda_many.mjs",
+    "qa:full": "node scripts/qa_full_validation_suite.mjs",
+    "qa:align-estrategia": "node scripts/qa_align_estrategia_300.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "docx": "^9.5.3",
+    "pdfjs-dist": "^5.4.624",
+    "pngjs": "^7.0.0",
+    "pptxgenjs": "^4.0.1"
+  },
+  "devDependencies": {
+    "c8": "^10.1.2"
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "metric_causa_accion",
+    "source_expected": "interno",
+    "turns": {
+      "u1": "Cual fue {RUBRO} en {ANO} y como cambio vs ano anterior?",
+      "b1": "dato + formula + YoY",
+      "u2": "Que explica el cambio en {RUBRO} para {ANO} en canal {CANAL}?",
+      "b2": "drivers + puente de variacion",
+      "u3": "Que recomiendas para mejorar {RUBRO} sin afectar caja bajo escenario {ESCENARIO}?",
+      "b3": "acciones + KPI objetivo"
+    }
+  },
+  {
+    "id": "credito",
+    "source_expected": "interno",
+    "turns": {
+      "u1": "Le das credito con plazo {PLAZO} y cupo {CUPO} en {ANO}?",
+      "b1": "rating + 4 bloques: rentabilidad, caja, leverage y pago",
+      "u2": "Que condiciones pones para aprobar?",
+      "b2": "garantias + covenants comerciales + monitoreo",
+      "u3": "Que gatillos harian rechazo despues de aprobado?",
+      "b3": "triggers: mora, cobertura, CCC y caja minima"
+    }
+  },
+  {
+    "id": "portal",
+    "source_expected": "interno+portal",
+    "turns": {
+      "u1": "Compara {RUBRO} interno vs portal en {ANO}.",
+      "b1": "tabla de diferencias + hipotesis",
+      "u2": "Cual fuente uso para decision?",
+      "b2": "criterio source of truth y jerarquia de fuentes",
+      "u3": "Como lo dejo documentado?",
+      "b3": "politica, mapeo y trazabilidad"
+    }
+  }
+]

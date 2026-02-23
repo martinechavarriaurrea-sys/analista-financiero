@@ -1,0 +1,162 @@
+[
+  {
+    "id": "P1",
+    "template": "Cual fue {RUBRO} en {ANO}?"
+  },
+  {
+    "id": "P2",
+    "template": "Como cambio {RUBRO} vs ano anterior en {ANO}?"
+  },
+  {
+    "id": "P3",
+    "template": "Cual es el % de {RUBRO} sobre ingresos en {ANO}?"
+  },
+  {
+    "id": "P4",
+    "template": "Cual fue el principal driver que movio {RUBRO} en {ANO}?"
+  },
+  {
+    "id": "P5",
+    "template": "Que rubros explican el 80% del cambio de EBITDA en {ANO}?"
+  },
+  {
+    "id": "P6",
+    "template": "Descompon crecimiento de ingresos en {ANO}: precio vs volumen vs mix."
+  },
+  {
+    "id": "P7",
+    "template": "Cual es el margen bruto en {ANO} y su variacion?"
+  },
+  {
+    "id": "P8",
+    "template": "Cual es el margen EBITDA en {ANO} y su variacion?"
+  },
+  {
+    "id": "P9",
+    "template": "Que {SEGMENTO} aporta mas al EBITDA en {ANO}?"
+  },
+  {
+    "id": "P10",
+    "template": "Cual es el margen bruto por {CANAL} en {ANO}?"
+  },
+  {
+    "id": "P11",
+    "template": "Cual es el margen EBITDA por {CANAL} en {ANO}?"
+  },
+  {
+    "id": "P12",
+    "template": "Identifica el top 5 {SEGMENTO} por ingresos en {ANO}."
+  },
+  {
+    "id": "P13",
+    "template": "Identifica el top 5 {SEGMENTO} por margen bruto en {ANO}."
+  },
+  {
+    "id": "P14",
+    "template": "Identifica el top 5 {SEGMENTO} por morosidad en {ANO}."
+  },
+  {
+    "id": "P15",
+    "template": "Que {SEGMENTO} destruye margen en {ANO}?"
+  },
+  {
+    "id": "P16",
+    "template": "Que clientes deberian tener ajuste de cupo en {ANO} y por que?"
+  },
+  {
+    "id": "P17",
+    "template": "Cual es el DSO en {ANO} y sus causas?"
+  },
+  {
+    "id": "P18",
+    "template": "Cual es el DIH en {ANO} y sus causas?"
+  },
+  {
+    "id": "P19",
+    "template": "Cual es el DPO en {ANO} y sus causas?"
+  },
+  {
+    "id": "P20",
+    "template": "Cual es el CCC en {ANO} y sus causas?"
+  },
+  {
+    "id": "P21",
+    "template": "Cuanta caja libera reducir DSO en 10 dias en {ANO}?"
+  },
+  {
+    "id": "P22",
+    "template": "Cuanta caja libera reducir DIH en 15 dias en {ANO}?"
+  },
+  {
+    "id": "P23",
+    "template": "Que pasa con caja si extendemos DPO 10 dias en {ANO}?"
+  },
+  {
+    "id": "P24",
+    "template": "Cual es Deuda Neta/EBITDA en {ANO}?"
+  },
+  {
+    "id": "P25",
+    "template": "Como se ve la cobertura de intereses en {ANO}?"
+  },
+  {
+    "id": "P26",
+    "template": "Cual es el costo efectivo de deuda en {ANO}?"
+  },
+  {
+    "id": "P27",
+    "template": "Que riesgos de refinanciacion hay en los proximos 12 meses desde {ANO}?"
+  },
+  {
+    "id": "P28",
+    "template": "Simula {ESCENARIO} en {ANO}: impacto en EBITDA y caja."
+  },
+  {
+    "id": "P29",
+    "template": "Simula {ESCENARIO} en {ANO}: impacto en covenants."
+  },
+  {
+    "id": "P30",
+    "template": "Que CAPEX minimo requiere sostener operaciones en {ANO}?"
+  },
+  {
+    "id": "P31",
+    "template": "Cual es el FCF en {ANO} y por que?"
+  },
+  {
+    "id": "P32",
+    "template": "Cuanto del EBITDA se convierte en FCF en {ANO}?"
+  },
+  {
+    "id": "P33",
+    "template": "Cual es la tasa efectiva de impuestos en {ANO} y explicacion?"
+  },
+  {
+    "id": "P34",
+    "template": "Normaliza EBITDA en {ANO} removiendo one-offs listados."
+  },
+  {
+    "id": "P35",
+    "template": "Compara {RUBRO} interno vs portal en {ANO}: diferencias y causas."
+  },
+  {
+    "id": "P36",
+    "template": "Compara margenes vs comparables del portal en {ANO}: gap y acciones."
+  },
+  {
+    "id": "P37",
+    "template": "Identifica 3 red flags financieras en {ANO}."
+  },
+  {
+    "id": "P38",
+    "template": "Identifica 3 oportunidades rapidas (quick wins) en {ANO}."
+  },
+  {
+    "id": "P39",
+    "template": "Recomiendas dar credito en {ANO} bajo politica X? Condiciones."
+  },
+  {
+    "id": "P40",
+    "template": "Resume en 5 bullets el desempeno total de {ANO}."
+  }
+]

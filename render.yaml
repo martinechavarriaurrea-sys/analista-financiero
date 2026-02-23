@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: analizador-advisor-api
+    runtime: node
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: ADVISOR_LLM_PROVIDER
+        value: openai
+      - key: OPENAI_MODEL
+        value: gpt-5-mini
+      - key: ADVISOR_SESSION_PERSIST
+        value: "1"
+      - key: ADVISOR_SESSION_STORE_FILE
+        value: /var/data/advisor_sessions.json
+      - key: ADVISOR_HOST
+        value: 0.0.0.0
+      - key: ADVISOR_PORT
+        value: "10000"
+      - key: OPENAI_API_KEY
+        sync: false

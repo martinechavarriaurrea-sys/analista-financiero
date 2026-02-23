@@ -1,0 +1,3002 @@
+[
+  {
+    "id": "C001",
+    "question": "Cual es la razon social y el NIT?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C002",
+    "question": "Cual es la actividad economica (CIIU) principal?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C003",
+    "question": "En que ciudad y departamento opera principalmente?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C004",
+    "question": "Cual es el tamano de la empresa segun ingresos?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C005",
+    "question": "Como ha crecido la empresa en los ultimos 6 anos?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C006",
+    "question": "Cual fue el ano de mayor crecimiento y por que?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C007",
+    "question": "Cual fue el ano de peor desempeno y por que?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C008",
+    "question": "Que lineas de negocio explican la mayoria de ingresos?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C009",
+    "question": "Que canales de venta aportan mas al ingreso?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C010",
+    "question": "Cual es la estructura de costos del negocio?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C011",
+    "question": "Que costos son fijos y cuales variables?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C012",
+    "question": "Que gastos son discrecionales y cuales obligatorios?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C013",
+    "question": "Que eventos extraordinarios afectaron resultados?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C014",
+    "question": "Hay concentracion de clientes relevante?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C015",
+    "question": "Hay concentracion de proveedores relevante?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C016",
+    "question": "Cual es la estacionalidad de ventas?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C017",
+    "question": "La empresa depende de TRM/insumos importados?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C018",
+    "question": "Cual es el nivel de informalidad/contingencias?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C019",
+    "question": "Que indicadores internos usa gerencia hoy?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C020",
+    "question": "Cuales son los 3 riesgos principales del negocio?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C021",
+    "question": "Cual fue el ingreso total de cada ano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C022",
+    "question": "Cual fue el crecimiento YoY de ingresos por ano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C023",
+    "question": "Cual es el CAGR de ingresos 6 anos?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C024",
+    "question": "Que porcentaje de ingresos viene del top 5 clientes?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C025",
+    "question": "Como cambia el precio promedio (ASP) por ano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C026",
+    "question": "Como cambia el volumen vendido por ano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C027",
+    "question": "Que parte del crecimiento fue precio vs volumen?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C028",
+    "question": "Que productos/lineas crecieron mas y cuales cayeron?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C029",
+    "question": "Que canal tiene mayor crecimiento y por que?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C030",
+    "question": "Que tasa de devoluciones/bonificaciones afecta ingresos?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C031",
+    "question": "Que descuentos promedio se aplican por canal?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C032",
+    "question": "Que impacto tienen rebates/bonos comerciales?",
+    "type": "scenario",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C033",
+    "question": "Que efecto tuvo la inflacion en ingresos reales?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C034",
+    "question": "Como se comportan ingresos en terminos USD (si aplica)?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C035",
+    "question": "La cartera esta creciendo mas rapido que ventas?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C036",
+    "question": "Existen ingresos no recurrentes? Identificalos.",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C037",
+    "question": "Cual es la calidad del ingreso (recurrencia)?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C038",
+    "question": "Cual es el ingreso por cliente (ARPC) si aplica?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C039",
+    "question": "Cual es la tasa de churn si aplica?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C040",
+    "question": "Hay concentracion por region/segmento?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C041",
+    "question": "Cual es la elasticidad aproximada precio-volumen?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C042",
+    "question": "Que mezcla de productos mejora margen?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C043",
+    "question": "Que mezcla de productos destruye margen?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C044",
+    "question": "Cual es la tasa de crecimiento trimestral/mensual (si hay)?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C045",
+    "question": "Que meses son pico y valle?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C046",
+    "question": "Que objetivos de ventas se cumplieron por ano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C047",
+    "question": "Que gap existe vs presupuesto?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C048",
+    "question": "Que sensibilidad hay ante caida del 10% en ventas?",
+    "type": "scenario",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C049",
+    "question": "Que sensibilidad hay ante aumento del 5% en precio?",
+    "type": "scenario",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C050",
+    "question": "Que acciones recomiendas para crecer sin perder margen?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C051",
+    "question": "Cual fue el costo de ventas (COGS) por ano?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C052",
+    "question": "Cual fue el margen bruto por ano?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C053",
+    "question": "Que explica el cambio del margen bruto ano a ano?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C054",
+    "question": "Cuanto pesa materia prima/compra vs mano de obra vs indirectos?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C055",
+    "question": "Como evoluciono el costo unitario por ano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C056",
+    "question": "Que porcentaje del COGS es variable?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C057",
+    "question": "Hay sobrecostos por ineficiencia/mermas?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C058",
+    "question": "Como impacta la TRM el COGS?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C059",
+    "question": "Que tan expuesto esta el margen a proveedores clave?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C060",
+    "question": "Cual es el punto de equilibrio (break-even) aproximado?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C061",
+    "question": "Que capacidad instalada existe y cual es su utilizacion?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C062",
+    "question": "Hay cuellos de botella operativos?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C063",
+    "question": "Que porcentaje del inventario es obsoleto?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C064",
+    "question": "Que provisiones afectan el margen?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C065",
+    "question": "Como cambian fletes y logistica en el COGS?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C066",
+    "question": "Que impacto tiene la mezcla de canales en margen bruto?",
+    "type": "scenario",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C067",
+    "question": "Cual es el margen bruto por linea/canal?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C068",
+    "question": "Que productos tienen margen negativo?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C069",
+    "question": "Donde se pierde margen: compras, produccion o ventas?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C070",
+    "question": "Que ahorro potencial existe renegociando proveedores?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C071",
+    "question": "Que ahorro potencial existe mejorando rotacion inventario?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C072",
+    "question": "Que ahorro potencial existe reduciendo mermas?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C073",
+    "question": "Que impacto tiene un +10% en COGS sobre EBITDA?",
+    "type": "scenario",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C074",
+    "question": "Que impacto tiene un -5% en COGS sobre EBITDA?",
+    "type": "scenario",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C075",
+    "question": "Hay costos capitalizables que hoy van a gasto?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C076",
+    "question": "Hay costos recurrentes mal clasificados?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C077",
+    "question": "Cuanto del margen depende de \"otros\" no claros?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C078",
+    "question": "Que indicadores de operacion explican margen (drivers)?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C079",
+    "question": "Que acciones recomiendas para recuperar margen bruto?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C080",
+    "question": "Cual es el margen bruto \"normalizado\" sin extraordinarios?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C081",
+    "question": "Cuales son los gastos operacionales por ano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C082",
+    "question": "Cual es el % OPEX/Ingresos por ano?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C083",
+    "question": "Que rubros de OPEX crecen mas rapido que ventas?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C084",
+    "question": "Que parte de OPEX es fija vs variable?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C085",
+    "question": "Cual es el EBITDA por ano?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C086",
+    "question": "Cual es el margen EBITDA por ano?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C087",
+    "question": "Que explica la variacion del EBITDA ano a ano?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C088",
+    "question": "El EBITDA se convierte en caja? Cuanto?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C089",
+    "question": "Cual es el EBIT y su margen por ano?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C090",
+    "question": "Que depreciacion/amortizacion pesa sobre EBIT?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C091",
+    "question": "Que gastos son \"one-off\" y deben normalizarse?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C092",
+    "question": "Cual es el EBITDA normalizado?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C093",
+    "question": "Que gastos administrativos son recortables sin riesgo?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C094",
+    "question": "Que gastos de venta son inversion (crecimiento) vs desperdicio?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C095",
+    "question": "Cual es la productividad: ingresos por empleado?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C096",
+    "question": "Cual es la productividad: EBITDA por empleado?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C097",
+    "question": "Como se comparan margenes vs empresas similares (portal)?",
+    "type": "profitability",
+    "source_expected": "interno+portal",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C098",
+    "question": "Que palancas suben EBITDA mas rapido?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C099",
+    "question": "Que palancas bajan riesgo de caja?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C100",
+    "question": "Que sensibilidad tiene EBITDA a caida de 5 puntos de margen bruto?",
+    "type": "scenario",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C101",
+    "question": "Que sensibilidad tiene EBITDA a subida de OPEX del 10%?",
+    "type": "scenario",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C102",
+    "question": "Cual es el operating leverage (apalancamiento operativo)?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C103",
+    "question": "Cual es el contribution margin estimado?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C104",
+    "question": "Que estructura de costos te hace mas vulnerable?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C105",
+    "question": "Que estructura te da resiliencia?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C106",
+    "question": "Hay subutilizacion que infla costos fijos por unidad?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C107",
+    "question": "Cuales son los 5 rubros OPEX mas grandes y por que?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C108",
+    "question": "Que OPEX deberia capitalizarse como CAPEX (si aplica)?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C109",
+    "question": "Que politica de remuneracion impacta EBITDA?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C110",
+    "question": "Que gasto comercial genera ROI medible?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C111",
+    "question": "Cual es el LTV/CAC si aplica?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C112",
+    "question": "Cual es el margen EBITDA por canal?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C113",
+    "question": "Cual es el margen EBITDA por linea?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C114",
+    "question": "Cuales son las 3 iniciativas para subir EBITDA en 90 dias?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C115",
+    "question": "Cuales son las 3 iniciativas para subir EBITDA en 12 meses?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C116",
+    "question": "Cual fue la utilidad neta por ano?",
+    "type": "net_income_tax",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C117",
+    "question": "Cual es el margen neto por ano?",
+    "type": "profitability",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C118",
+    "question": "Cual es la tasa efectiva de impuestos por ano?",
+    "type": "net_income_tax",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C119",
+    "question": "La tasa efectiva es consistente con el regimen colombiano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C120",
+    "question": "Hay diferencias permanentes/temporales relevantes?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C121",
+    "question": "Hay impuestos diferidos significativos?",
+    "type": "net_income_tax",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C122",
+    "question": "Que contingencias fiscales existen?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C123",
+    "question": "Que tan \"limpia\" es la utilidad (sin extraordinarios)?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C124",
+    "question": "Que parte de utilidad es financiera vs operativa?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C125",
+    "question": "Que parte de utilidad proviene de otros ingresos?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C126",
+    "question": "Hay ingresos no operacionales recurrentes?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C127",
+    "question": "Hay gastos no operacionales recurrentes?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C128",
+    "question": "Hay deterioros/provisiones que distorsionan utilidad?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C129",
+    "question": "Hay cambios contables que expliquen saltos?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C130",
+    "question": "Hay subsidios o beneficios tributarios?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C131",
+    "question": "Cual es el ROE por ano?",
+    "type": "net_income_tax",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C132",
+    "question": "Cual es el ROA por ano?",
+    "type": "net_income_tax",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C133",
+    "question": "Cual es el ROIC aproximado por ano?",
+    "type": "net_income_tax",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C134",
+    "question": "La empresa destruye o crea valor vs WACC?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C135",
+    "question": "Cual es el EPS si aplica?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C136",
+    "question": "Como se relaciona utilidad con caja operativa?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C137",
+    "question": "Que ano tuvo mejor conversion utilidad->caja?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C138",
+    "question": "Que ano tuvo peor conversion y por que?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C139",
+    "question": "Que ajustes harias para normalizar la utilidad?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C140",
+    "question": "Que conclusion ejecutiva sacas de la utilidad neta?",
+    "type": "net_income_tax",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C141",
+    "question": "Cuales son activos corrientes por ano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C142",
+    "question": "Cuales son pasivos corrientes por ano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C143",
+    "question": "Cual es el capital de trabajo neto por ano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C144",
+    "question": "Cual es la razon corriente por ano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C145",
+    "question": "Cual es la prueba acida por ano?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C146",
+    "question": "Como cambia la caja por ano y por que?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C147",
+    "question": "Como cambia CxC por ano y por que?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C148",
+    "question": "Cual es el DSO (dias cartera) por ano?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C149",
+    "question": "Como cambia inventario por ano y por que?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C150",
+    "question": "Cual es el DIH (dias inventario) por ano?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C151",
+    "question": "Como cambia CxP por ano y por que?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C152",
+    "question": "Cual es el DPO (dias proveedores) por ano?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C153",
+    "question": "Cual es el ciclo de conversion de efectivo (CCC) por ano?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C154",
+    "question": "El CCC mejora o empeora y por que?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C155",
+    "question": "Cual es la cartera vencida >90 dias?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C156",
+    "question": "Cual es la provision de cartera y cobertura?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C157",
+    "question": "Que % de inventario es lento/obsoleto?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C158",
+    "question": "Que riesgos hay por liquidez a 90 dias?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C159",
+    "question": "Cual es la caja minima operativa recomendada?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C160",
+    "question": "Que palancas liberan caja rapido (CxC, inventario, CxP)?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C161",
+    "question": "Que descuento por pronto pago conviene vs costo deuda?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C162",
+    "question": "Que politicas de credito deberian ajustarse?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C163",
+    "question": "Que clientes deben bajar cupo o pedir garantias?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C164",
+    "question": "Que proveedores permiten extender plazo sin riesgo?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C165",
+    "question": "Como se ve la liquidez en estres (ventas -20%)?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C166",
+    "question": "Cual es el burn rate si hay perdidas?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C167",
+    "question": "Cuanto runway tiene con caja actual?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C168",
+    "question": "Que senales anticipan crisis de caja?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C169",
+    "question": "Que tan dependiente es de anticipos de clientes?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C170",
+    "question": "Hay factoring? Cual es su costo efectivo?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C171",
+    "question": "Hay confirming? Cual es su costo?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C172",
+    "question": "Como impacta la inflacion en CT?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C173",
+    "question": "Que tan sensible es CT a crecimiento de ventas?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C174",
+    "question": "Cual es el CT \"normalizado\" por estacionalidad?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C175",
+    "question": "Que plan de accion recomiendas para mejorar CCC?",
+    "type": "cashflow_wcm",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C176",
+    "question": "Cual es la deuda total por ano (CP y LP)?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C177",
+    "question": "Cual es la deuda neta por ano?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C178",
+    "question": "Cual es Deuda Neta/EBITDA por ano?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C179",
+    "question": "Cual es la cobertura de intereses (EBIT/Intereses)?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C180",
+    "question": "Cual es la cobertura (EBITDA/Intereses)?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C181",
+    "question": "Cual es el costo promedio ponderado de la deuda?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C182",
+    "question": "Cual es el calendario de vencimientos?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C183",
+    "question": "Que porcentaje es tasa fija vs variable?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C184",
+    "question": "Que riesgo hay por IBR/DTF/IPC?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C185",
+    "question": "Que riesgo hay por TRM en deuda?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C186",
+    "question": "Que covenants existen y como van vs limites?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C187",
+    "question": "Cual es el DSCR por ano (si hay data)?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C188",
+    "question": "La empresa puede refinanciar? Con que argumentos?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C189",
+    "question": "Que garantias estan comprometidas?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C190",
+    "question": "Que tan bancarizable es segun indicadores?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C191",
+    "question": "Que senales muestran riesgo de incumplimiento?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C192",
+    "question": "Que plan de desapalancamiento recomiendas?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C193",
+    "question": "Conviene pre-pagar deuda o invertir en CAPEX?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C194",
+    "question": "Que impacto tiene subir 300 bps la tasa?",
+    "type": "scenario",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C195",
+    "question": "Que impacto tiene bajar 200 bps la tasa?",
+    "type": "scenario",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C196",
+    "question": "Que impacto tiene devaluacion del 15%?",
+    "type": "scenario",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C197",
+    "question": "Que nivel de deuda seria \"sano\" para esta empresa?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C198",
+    "question": "Que estructura de deuda optimiza costo y riesgo?",
+    "type": "debt_risk",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C199",
+    "question": "Cual es tu rating interno (A/B/C/D) y por que?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  },
+  {
+    "id": "C200",
+    "question": "Darias credito? Con que condiciones y mitigantes?",
+    "type": "general",
+    "source_expected": "interno",
+    "variables": {},
+    "response_schema": {
+      "short_answer": "1-2 lineas maximo",
+      "formula": "calculo o formula usada",
+      "data_used": "ano, rubros y fuente interno/portal",
+      "interpretation": "por que importa para negocio y riesgo",
+      "action": "recomendacion concreta y priorizada",
+      "missing_data_policy": "si falta dato: decir 'Dato no disponible', explicar faltante y proxy permitido"
+    }
+  }
+]

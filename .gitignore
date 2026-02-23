@@ -1,0 +1,14 @@
+﻿.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+build/
+dist/
+*.spec
+app.log
+AnalizadorEmpresasSupersociedades/
+.env
+.advisor_sessions.json
+node_modules/
+coverage/
+_tmp_*

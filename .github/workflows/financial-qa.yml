@@ -1,0 +1,85 @@
+name: Financial QA CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: financial-qa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  qa:
+    name: Test + Coverage + Full QA + Alignment
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run QA tests
+        run: npm run test:qa
+
+      - name: Run QA coverage
+        run: npm run test:qa:coverage
+
+      - name: Run full QA with real data (retry)
+        env:
+          QA_REAL_SAMPLE: "40"
+          QA_REAL_YEARS: "4"
+          QA_REAL_CONCURRENCY: "12"
+          QA_REAL_TIMEOUT_MS: "60000"
+        run: |
+          for i in 1 2 3; do
+            echo "qa:full attempt $i"
+            if npm run qa:full; then
+              exit 0
+            fi
+            if [ "$i" -eq 3 ]; then
+              echo "qa:full failed after 3 attempts"
+              exit 1
+            fi
+            sleep 10
+          done
+
+      - name: Run alignment QA vs Estrategia en Accion (retry)
+        env:
+          QA_ALIGN_TARGET: "300"
+          QA_ALIGN_MAX_COMPANIES: "80"
+          QA_ALIGN_CONCURRENCY: "6"
+          QA_ALIGN_TIMEOUT_MS: "90000"
+        run: |
+          for i in 1 2 3; do
+            echo "qa:align-estrategia attempt $i"
+            if npm run qa:align-estrategia; then
+              exit 0
+            fi
+            if [ "$i" -eq 3 ]; then
+              echo "qa:align-estrategia failed after 3 attempts"
+              exit 1
+            fi
+            sleep 10
+          done
+
+      - name: Upload QA artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: financial-qa-artifacts
+          path: |
+            coverage/coverage-summary.json
+            _tmp_qa_full_validation.json
+            bot_training/reporte_qa_full_validation.md
+            _tmp_qa_align_estrategia_300.json
+            bot_training/reporte_qa_align_estrategia_300.md

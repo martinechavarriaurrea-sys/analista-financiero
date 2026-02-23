@@ -1,0 +1,281 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="advisor-base-url" content="" />
+  <title>Analizador de Empresas - Supersociedades</title>
+
+  <!-- Chart.js para renderizar graficas de los indicadores -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <!-- html2pdf para exportar el analisis completo a PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+  <!-- Nucleo auditable de calculo financiero -->
+  <script src="calc_qa_core.js?v=20260222d" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260223a" />
+  <script src="app.js?v=20260223i" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <h1>Analizador de Empresas - Supersociedades</h1>
+      <p>Consulta por NIT o nombre, revisa los ultimos 7 años y entiende cada metrica con lenguaje claro.</p>
+    </header>
+
+    <main class="layout-grid">
+      <!-- Busqueda principal -->
+      <section class="panel search-panel">
+        <h2>1) Buscar empresa</h2>
+        <p class="hint">
+          La busqueda se hace sobre el portal oficial de Supersociedades (superwas). Si tu navegador bloquea la consulta,
+          se mostrara un mensaje de conexion claro para que puedas reintentar.
+        </p>
+
+        <div class="form-row">
+          <label for="searchType">Buscar por</label>
+          <select id="searchType">
+            <option value="nit">NIT</option>
+            <option value="name">Nombre o razon social</option>
+          </select>
+
+          <label for="searchInput">Valor</label>
+          <input id="searchInput" type="text" placeholder="Ej: 900925798 o ECOPETROL" />
+
+          <button id="searchBtn" class="btn-primary" type="button">Buscar</button>
+          <button id="clearBtn" class="btn-secondary" type="button">Limpiar</button>
+        </div>
+
+        <div id="messageBox" class="message info hidden" role="alert"></div>
+
+        <!-- Lista de resultados cuando la busqueda por nombre trae varias empresas -->
+        <div id="companyResultsBlock" class="hidden">
+          <label for="companySelect">Empresas encontradas</label>
+          <div class="inline-row">
+            <select id="companySelect"></select>
+            <button id="loadCompanyBtn" class="btn-secondary" type="button">Cargar empresa</button>
+          </div>
+        </div>
+
+        <!-- Resumen de empresa seleccionada -->
+        <article id="selectedCompanyCard" class="company-card hidden">
+          <h3>Empresa seleccionada</h3>
+          <p><strong>Razon social:</strong> <span id="companyName">-</span></p>
+          <p><strong>NIT:</strong> <span id="companyNit">-</span></p>
+          <p><strong>Estado:</strong> <span id="companyStatus">-</span></p>
+          <p><strong>Etapa:</strong> <span id="companyStage">-</span></p>
+          <p><strong>Dependencia:</strong> <span id="companyDependency">-</span></p>
+        </article>
+      </section>
+
+      <!-- Seleccion de años -->
+      <section class="panel years-panel">
+        <h2>2) Selecciona años a revisar</h2>
+        <div class="inline-row">
+          <button id="selectAllYearsBtn" class="btn-secondary" type="button">Seleccionar todos</button>
+          <button id="clearYearsBtn" class="btn-secondary" type="button">Quitar todos</button>
+          <button id="analyzeBtn" class="btn-primary" type="button" disabled>Actualizar analisis</button>
+        </div>
+        <div id="yearsHelp" class="hint">Primero busca y carga una empresa para habilitar años.</div>
+        <div id="yearsContainer" class="years-grid"></div>
+      </section>
+
+      <!-- Exportacion -->
+      <section class="panel export-panel">
+        <h2>3) Exportar resultados</h2>
+        <p class="hint">Descarga el analisis filtrado por los años seleccionados.</p>
+        <div class="inline-row">
+          <button id="exportCsvBtn" class="btn-secondary" type="button" disabled>Descargar CSV</button>
+          <button id="exportJsonBtn" class="btn-secondary" type="button" disabled>Descargar JSON</button>
+          <button id="exportPdfBtn" class="btn-primary" type="button" disabled>Descargar PDF</button>
+        </div>
+      </section>
+
+      <!-- KPIs y estados financieros -->
+      <section class="panel kpi-panel">
+        <h2>Panel de KPIs y estados</h2>
+        <article class="statement-card statement-primary-card">
+          <h3>Estado de resultados completo (vista principal)</h3>
+          <div class="table-wrap">
+            <table id="incomeTable"></table>
+          </div>
+        </article>
+
+        <h3 class="metrics-title">Indicadores de rentabilidad y cobertura</h3>
+        <div class="table-wrap">
+          <table id="metricsTable"></table>
+        </div>
+
+        <h3 class="metrics-title">KPIs rapidos</h3>
+        <div id="kpiCards" class="kpi-cards"></div>
+
+        <div class="statement-secondary-stack">
+          <article class="statement-card">
+            <h3>Balance general</h3>
+            <div class="table-wrap">
+              <table id="balanceTable"></table>
+            </div>
+          </article>
+
+          <article class="statement-card">
+            <h3>Flujo de caja completo</h3>
+            <div class="table-wrap">
+              <table id="cashTable"></table>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="metrics-title">Lectura profunda del estado de resultados</h3>
+        <div id="deepIncomeAnalysis" class="deep-analysis-grid"></div>
+        <h3 class="metrics-title">Resumen de balance general y flujo de efectivo</h3>
+        <div class="financial-summary-grid">
+          <article id="balanceSummaryCard" class="analysis-card"></article>
+          <article id="cashflowSummaryCard" class="analysis-card"></article>
+        </div>
+      </section>
+
+      <!-- Graficas + interpretacion -->
+      <section class="panel charts-panel">
+        <h2>Graficas e interpretacion financiera</h2>
+        <p class="hint">
+          Cada bloque incluye una grafica por metrica y una explicacion corta: que significa, como leerla y señales positivas/negativas.
+        </p>
+        <div id="chartsContainer" class="charts-container"></div>
+      </section>
+
+      <section class="panel bot-panel">
+        <h2>Tu Asesor Financiero (Chat)</h2>
+        <p class="hint">Pregúntame por esta empresa y te respondo con lectura financiera y recomendaciones.</p>
+
+        <div id="botQuickQuestions" class="bot-quick">
+          <button type="button" class="btn-secondary" data-q="Para que sirve el EBITDA">Para que sirve el EBITDA</button>
+          <button type="button" class="btn-secondary" data-q="Que es WACC y para que sirve">Que es WACC</button>
+          <button type="button" class="btn-secondary" data-q="Explicame FCFF en palabras faciles">Explicame FCFF</button>
+          <button type="button" class="btn-secondary" data-q="Explicame tu metodo A/F/A">Metodo A/F/A</button>
+          <button type="button" class="btn-secondary" data-q="Como haces la recopilación de datos">Recopilación de datos</button>
+          <button type="button" class="btn-secondary" data-q="Explicame la deuda EBITDA de esta empresa">Explicame deuda/EBITDA</button>
+          <button type="button" class="btn-secondary" data-q="Dame un resumen rapido de la empresa">Resumen rapido</button>
+          <button type="button" class="btn-secondary" data-q="Que puede mejorar esta empresa">Que puede mejorar</button>
+          <button type="button" class="btn-secondary" data-q="Que documentos o datos te faltan para valorar con precision">Que te falta para valorar</button>
+        </div>
+
+        <div id="botChatLog" class="bot-chat-log"></div>
+
+        <div class="bot-input-row">
+          <textarea id="botQuestionInput" rows="3" placeholder="Escribe tu pregunta..."></textarea>
+          <div class="bot-actions">
+            <button id="botSendBtn" class="btn-primary" type="button">Preguntar</button>
+            <button id="botClearBtn" class="btn-secondary" type="button">Limpiar chat</button>
+          </div>
+        </div>
+
+        <div id="botThinkingPanel" class="bot-thinking-panel">
+          <div class="inline-row">
+            <strong>Traza de pensamiento (debug)</strong>
+            <button id="botThinkingRefreshBtn" class="btn-secondary" type="button">Actualizar trazas</button>
+            <button id="botThinkingClearBtn" class="btn-secondary" type="button">Limpiar trazas</button>
+          </div>
+          <div id="botThinkingStatus" class="hint">Aun no hay trazas. Haz una pregunta para registrar turnos.</div>
+          <div id="botThinkingLog" class="bot-thinking-log"></div>
+        </div>
+
+        <div class="external-ai-block" hidden>
+          <h3>Modo IA externa (A/F/A)</h3>
+          <p class="hint">El bot responde dentro de este chat y, si configuras APIs, consulta fuentes externas en paralelo para enriquecer la respuesta.</p>
+
+          <label class="inline-row" for="extModeToggle">
+            <input id="extModeToggle" type="checkbox" checked />
+            <span>Consultar APIs externas y responder en este mismo chat</span>
+          </label>
+
+          <details class="ext-settings">
+            <summary>Configuracion de APIs externas</summary>
+            <div class="ext-settings-grid">
+              <label class="ext-field">
+                <span>OpenAI API Key</span>
+                <input id="extOpenAiKey" type="password" placeholder="sk-..." />
+              </label>
+              <label class="ext-field">
+                <span>Modelo OpenAI</span>
+                <input id="extOpenAiModel" type="text" value="gpt-5.1-chat-latest" />
+              </label>
+
+              <label class="ext-field">
+                <span>Perplexity API Key</span>
+                <input id="extPerplexityKey" type="password" placeholder="pplx-..." />
+              </label>
+              <label class="ext-field">
+                <span>Modelo Perplexity</span>
+                <input id="extPerplexityModel" type="text" value="sonar-pro" />
+              </label>
+
+              <label class="ext-field">
+                <span>Humata API Key</span>
+                <input id="extHumataKey" type="password" placeholder="Bearer token" />
+              </label>
+              <label class="ext-field">
+                <span>Humata model</span>
+                <input id="extHumataModel" type="text" value="gpt-5-mini" />
+              </label>
+              <label class="ext-field">
+                <span>Humata endpoint (opcional)</span>
+                <input id="extHumataEndpoint" type="text" placeholder="https://api.humata.ai/v1/chat/completions" />
+              </label>
+
+              <label class="ext-field ext-field-full">
+                <span>Humata Document IDs (coma o salto de linea)</span>
+                <textarea id="extHumataDocIds" rows="3" placeholder="uuid-1, uuid-2"></textarea>
+              </label>
+
+              <label class="ext-field">
+                <span>Copilot endpoint (opcional)</span>
+                <input id="extCopilotEndpoint" type="text" placeholder="https://.../copilot/chat" />
+              </label>
+              <label class="ext-field">
+                <span>Copilot bearer token (opcional)</span>
+                <input id="extCopilotToken" type="password" placeholder="Bearer token" />
+              </label>
+
+              <label class="ext-field">
+                <span>NotebookLM endpoint (opcional)</span>
+                <input id="extNotebookEndpoint" type="text" placeholder="https://.../notebooklm/chat" />
+              </label>
+              <label class="ext-field">
+                <span>NotebookLM bearer token (opcional)</span>
+                <input id="extNotebookToken" type="password" placeholder="Bearer token" />
+              </label>
+            </div>
+            <div class="inline-row">
+              <button id="extSaveConfigBtn" class="btn-secondary" type="button">Guardar configuracion</button>
+              <button id="extClearConfigBtn" class="btn-secondary" type="button">Limpiar configuracion</button>
+            </div>
+          </details>
+
+          <label for="extContextInput">Contexto adicional que quieres incluir</label>
+          <textarea id="extContextInput" rows="4" placeholder="Ejemplo: objetivo del análisis, hipótesis, riesgos que te preocupan, decisión que debes tomar..."></textarea>
+
+          <div class="ext-provider-grid" id="extProviderList">
+            <label><input class="ext-provider-check" type="checkbox" data-url="https://www.perplexity.ai/" checked /> Perplexity</label>
+            <label><input class="ext-provider-check" type="checkbox" data-url="https://chatgpt.com/" checked /> ChatGPT</label>
+            <label><input class="ext-provider-check" type="checkbox" data-url="https://copilot.microsoft.com/" checked /> Copilot</label>
+            <label><input class="ext-provider-check" type="checkbox" data-url="https://www.humata.ai/" checked /> Humata</label>
+            <label><input class="ext-provider-check" type="checkbox" data-url="https://notebooklm.google/" checked /> NotebookLM</label>
+          </div>
+
+          <div class="inline-row">
+            <button id="extBuildPromptBtn" class="btn-primary" type="button">Generar prompt A/F/A</button>
+            <button id="extCopyPromptBtn" class="btn-secondary" type="button">Copiar prompt</button>
+            <button id="extDownloadContextBtn" class="btn-secondary" type="button">Descargar contexto JSON</button>
+            <button id="extOpenLinksBtn" class="btn-secondary" type="button">Abrir links seleccionados</button>
+          </div>
+          <div id="extConfigStatus" class="hint">Configura al menos una API externa para consulta automatica.</div>
+
+          <label for="extPromptOutput">Prompt generado para análisis externo</label>
+          <textarea id="extPromptOutput" rows="10" readonly placeholder="Aquí aparecerá el prompt estructurado..."></textarea>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+
+
