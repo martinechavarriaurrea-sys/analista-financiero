@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "env": {
+    "ADVISOR_LLM_PROVIDER": "auto",
+    "ADVISOR_FAST_MODE": "1",
+    "ADVISOR_PRECISION_MODE": "high",
+    "ADVISOR_INTERPRETATION_LEVEL": "3",
+    "ADVISOR_ENFORCE_YEAR_ISOLATION": "1",
+    "ADVISOR_AUTH_USER": "Mamuelitalamaslinda",
+    "ADVISOR_AUTH_PASSWORD": "Teamoamordemivida",
+    "ADVISOR_SESSION_PERSIST": "0"
+  },
+  "rewrites": [
+    {
+      "source": "/health",
+      "destination": "/api/health"
+    }
+  ]
+}

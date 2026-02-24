@@ -36,7 +36,7 @@ const sessionStore = new Map();
 
 hydrateSessionStore();
 
-const server = http.createServer(async (req, res) => {
+async function handleAdvisorRequest(req, res) {
   const url = new URL(req.url || "/", `http://${req.headers.host || "localhost"}`);
   pruneSessionStore();
   if (req.method === "OPTIONS") {
@@ -241,15 +241,23 @@ const server = http.createServer(async (req, res) => {
     if (served) return;
   }
   sendJson(res, 404, { error: "Ruta no encontrada." });
-});
+}
 
-server.listen(PORT, HOST, () => {
-  const cfg = getServerConfigSummary();
-  console.log(`[advisor] activo en http://${HOST}:${PORT}`);
-  console.log(`[advisor] provider: ${cfg.provider} | modelo activo: ${cfg.model}`);
-  console.log(`[advisor] openai habilitado: ${cfg.openai_enabled ? "si" : "no"} | ollama base: ${OLLAMA_BASE}`);
-  console.log(`[advisor] sesion persistente: ${SESSION_PERSIST ? "si" : "no"} | archivo: ${SESSION_STORE_FILE}`);
-});
+function startAdvisorServer() {
+  const server = http.createServer(handleAdvisorRequest);
+  server.listen(PORT, HOST, () => {
+    const cfg = getServerConfigSummary();
+    console.log(`[advisor] activo en http://${HOST}:${PORT}`);
+    console.log(`[advisor] provider: ${cfg.provider} | modelo activo: ${cfg.model}`);
+    console.log(`[advisor] openai habilitado: ${cfg.openai_enabled ? "si" : "no"} | ollama base: ${OLLAMA_BASE}`);
+    console.log(`[advisor] sesion persistente: ${SESSION_PERSIST ? "si" : "no"} | archivo: ${SESSION_STORE_FILE}`);
+  });
+  return server;
+}
+
+if (require.main === module) {
+  startAdvisorServer();
+}
 
 async function buildAdvisorAnswer(question, payload, localAnswer, webEvidence, opts = {}) {
   if (opts.skipLlm) {
@@ -2137,3 +2145,8 @@ function fmtNum(v) {
   if (!Number.isFinite(v)) return "N/D";
   return new Intl.NumberFormat("es-CO", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
 }
+
+module.exports = {
+  handleAdvisorRequest,
+  startAdvisorServer
+};

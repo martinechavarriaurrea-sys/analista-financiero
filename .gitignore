@@ -12,3 +12,5 @@ AnalizadorEmpresasSupersociedades/
 node_modules/
 coverage/
 _tmp_*
+.vercel/
+gcm_login.log
