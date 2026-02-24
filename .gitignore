@@ -13,4 +13,5 @@ node_modules/
 coverage/
 _tmp_*
 .vercel/
+.vercel-cli/
 gcm_login.log
