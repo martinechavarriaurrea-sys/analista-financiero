@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: analizador-advisor-api
+    name: analista-financiero-martin
     runtime: node
     buildCommand: npm ci --omit=dev
     startCommand: npm start
