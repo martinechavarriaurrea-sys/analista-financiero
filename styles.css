@@ -342,6 +342,22 @@ th {
   color: #123f6b;
 }
 
+.wk-model-section td {
+  background: #0f4f83;
+  color: #f4f9ff;
+  font-weight: 700;
+  text-align: left !important;
+}
+
+.wk-model-total td {
+  background: #eef5ff;
+  font-weight: 700;
+}
+
+.wk-model-delta td {
+  color: #1f5a8f;
+}
+
 .metrics-title {
   margin-top: 14px;
 }

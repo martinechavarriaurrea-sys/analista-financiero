@@ -26,6 +26,114 @@ const EXTERNAL_INCOME_CONFIG = {
 let externalIncomeContextPromise = null;
 const externalIncomeYearCache = new Map();
 
+// Modelo de capital de trabajo inspirado en la estructura de Estrategia en Accion.
+const WORKING_CAPITAL_MODEL_PATTERNS = {
+  cuentas_por_cobrar: {
+    exact: [
+      "deudores comerciales y otras cuentas por cobrar corrientes",
+      "cuentas comerciales por cobrar y otras cuentas por cobrar corrientes",
+      "cuentas por cobrar corrientes"
+    ],
+    contains: [
+      "cuentas por cobrar corrientes",
+      "deudores comerciales",
+      "clientes",
+      "deudores"
+    ],
+    exclude: ["no corrientes", "no corriente", "largo plazo", "deterioro"]
+  },
+  inventario: {
+    exact: ["inventarios", "inventario"],
+    contains: ["inventarios", "inventario"],
+    exclude: ["deterioro"]
+  },
+  activos_biologicos_cp: {
+    exact: ["activos biologicos corrientes"],
+    contains: ["activos biologicos corrientes", "activos biologicos cp", "activos biologicos corto plazo"],
+    exclude: ["no corrientes", "no corriente", "largo plazo"]
+  },
+  impuestos_a_favor: {
+    exact: ["impuestos a favor"],
+    contains: ["impuestos a favor", "saldo a favor", "retenciones a favor", "anticipo de impuestos"],
+    exclude: ["por pagar", "pasivos"]
+  },
+  otros_activos_corrientes: {
+    exact: ["otros activos corrientes"],
+    contains: ["otros activos corrientes", "otros activos de corto plazo"],
+    exclude: ["no corrientes", "no corriente", "largo plazo"]
+  },
+  proveedores: {
+    exact: ["proveedores", "cuentas por pagar comerciales"],
+    contains: ["proveedores", "cuentas por pagar comerciales", "cuentas comerciales por pagar"],
+    exclude: ["no corrientes", "no corriente", "largo plazo"]
+  },
+  obligaciones_laborales: {
+    exact: ["obligaciones laborales", "beneficios a empleados corrientes"],
+    contains: ["obligaciones laborales", "beneficios a empleados", "nomina por pagar"],
+    exclude: ["no corrientes", "no corriente", "largo plazo"]
+  },
+  impuestos_por_pagar: {
+    exact: ["impuestos por pagar", "pasivos por impuestos corrientes"],
+    contains: ["impuestos por pagar", "pasivos por impuestos corrientes", "impuesto corriente por pagar"],
+    exclude: ["a favor", "activo"]
+  },
+  provisiones_cp: {
+    exact: ["provisiones corrientes"],
+    contains: ["provisiones corrientes", "provisiones"],
+    exclude: ["no corrientes", "no corriente", "largo plazo"]
+  },
+  ppye: {
+    exact: ["propiedades, planta y equipo", "propiedad, planta y equipo", "ppy&e", "ppye"],
+    contains: ["propiedades, planta y equipo", "propiedad planta y equipo", "ppye", "activo fijo"],
+    exclude: ["depreciacion acumulada"]
+  },
+  intangibles: {
+    exact: ["activos intangibles", "intangibles"],
+    contains: ["intangibles", "activos intangibles"],
+    exclude: ["amortizacion acumulada"]
+  },
+  activos_biologicos_lp: {
+    exact: ["activos biologicos no corrientes"],
+    contains: ["activos biologicos no corrientes", "activos biologicos lp", "activos biologicos largo plazo"],
+    exclude: ["corrientes", "corto plazo"]
+  },
+  inversiones: {
+    exact: ["inversiones", "inversiones no corrientes"],
+    contains: ["inversiones", "inversiones no corrientes"],
+    exclude: ["propiedades de inversion"]
+  },
+  intercompanies: {
+    exact: ["intercompanias", "intercompanies"],
+    contains: ["intercompanias", "intercompanies", "partes relacionadas", "vinculadas"],
+    exclude: ["por pagar", "pasivos", "obligaciones"]
+  },
+  otras_cxc_no_corrientes: {
+    exact: ["otras cuentas por cobrar no corrientes", "cuentas por cobrar no corrientes"],
+    contains: ["otras cxc no corrientes", "cuentas por cobrar no corrientes"],
+    exclude: ["corrientes", "corto plazo"]
+  },
+  otros_activos_no_corrientes: {
+    exact: ["otros activos no corrientes"],
+    contains: ["otros activos no corrientes", "otros activos a largo plazo"],
+    exclude: ["corrientes", "corto plazo"]
+  },
+  otros_activos_no_op: {
+    exact: ["otros activos no operacionales", "otros activos no op"],
+    contains: ["otros activos no op", "otros activos no operacionales"],
+    exclude: ["corrientes", "corto plazo"]
+  },
+  otros_pasivos: {
+    exact: ["otros pasivos"],
+    contains: ["otros pasivos"],
+    exclude: ["no operacionales"]
+  },
+  otros_pasivos_no_op: {
+    exact: ["otros pasivos no operacionales", "otros pasivos no op"],
+    contains: ["otros pasivos no op", "otros pasivos no operacionales"],
+    exclude: []
+  }
+};
+
 const METRIC_LABELS = {
   estado_resultados: "Estado de resultados",
   ingresos: "Ingresos",
@@ -958,7 +1066,7 @@ function bindDom() {
     "searchType", "searchInput", "searchBtn", "clearBtn", "messageBox", "companyResultsBlock", "companySelect", "loadCompanyBtn",
     "selectedCompanyCard", "companyName", "companyNit", "companyStatus", "companyStage", "companyDependency",
     "selectAllYearsBtn", "clearYearsBtn", "analyzeBtn", "yearsHelp", "yearsContainer",
-    "exportCsvBtn", "exportJsonBtn", "exportPdfBtn", "kpiCards", "incomeTable", "extIncomeStatus", "extIncomeTable", "balanceTable", "cashTable", "metricsTable", "deepIncomeAnalysis",
+    "exportCsvBtn", "exportJsonBtn", "exportPdfBtn", "kpiCards", "incomeTable", "extIncomeStatus", "extIncomeTable", "balanceTable", "cashTable", "wkModelTable", "metricsTable", "deepIncomeAnalysis",
     "balanceSummaryCard", "cashflowSummaryCard", "chartsContainer",
     "botQuickQuestions", "botChatLog", "botQuestionInput", "botSendBtn", "botClearBtn",
     "botThinkingPanel", "botThinkingLog", "botThinkingRefreshBtn", "botThinkingClearBtn", "botThinkingStatus",
@@ -1044,6 +1152,7 @@ function resetUi(options = {}) {
   }
   dom.balanceTable.innerHTML = "";
   dom.cashTable.innerHTML = "";
+  if (dom.wkModelTable) dom.wkModelTable.innerHTML = "";
   dom.metricsTable.innerHTML = "";
   dom.deepIncomeAnalysis.innerHTML = "";
   dom.balanceSummaryCard.innerHTML = "";
@@ -1156,6 +1265,7 @@ function clearAnalysisUi() {
   }
   dom.balanceTable.innerHTML = "";
   dom.cashTable.innerHTML = "";
+  if (dom.wkModelTable) dom.wkModelTable.innerHTML = "";
   dom.metricsTable.innerHTML = "";
   dom.deepIncomeAnalysis.innerHTML = "";
   dom.balanceSummaryCard.innerHTML = "";
@@ -2568,6 +2678,14 @@ function computeSnapshot(income, balance, cashflow) {
     warnings.push("Capital neto de trabajo tomado desde rubro directo por ausencia de activos/pasivos corrientes.");
   }
   const diasKnt = knt !== null && ingresos !== null && ingresos !== 0 ? (knt / ingresos) * 365 : null;
+  const wkModel = buildWorkingCapitalModelSnapshot({
+    balanceConcepts: balance,
+    activosCorrientes: ac,
+    pasivosCorrientes: pc,
+    capitalNetoTrabajo: knt,
+    capex,
+    depAmort
+  });
   const debtInputs = resolveFinancialDebtFromConcepts(balance);
   const deudaSumada = debtInputs.deudaSumada;
   const deudaDirecta = debtInputs.deudaDirecta;
@@ -2644,9 +2762,103 @@ function computeSnapshot(income, balance, cashflow) {
       flujo_operativo_reportado: flujoOperativoReportado,
       flujo_financiacion_reportado: flujoFinanciacionReportado
     },
+    wk_model: wkModel,
     metrics,
     warnings,
     audit
+  };
+}
+
+function buildWorkingCapitalModelSnapshot(input = {}) {
+  const concepts = input?.balanceConcepts || {};
+  const activosCorrientes = input?.activosCorrientes;
+  const pasivosCorrientes = input?.pasivosCorrientes;
+  const capitalNetoTrabajo = input?.capitalNetoTrabajo;
+  const depAmort = Number.isFinite(input?.depAmort) ? Math.abs(input.depAmort) : null;
+
+  const asPositive = (v) => (Number.isFinite(v) ? Math.abs(v) : null);
+
+  let cuentasPorCobrar = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.cuentas_por_cobrar));
+  let inventario = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.inventario));
+  let activosBiologicosCp = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.activos_biologicos_cp));
+  let impuestosAFavor = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.impuestos_a_favor));
+  let otrosActivosCorrientes = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.otros_activos_corrientes));
+
+  if (!Number.isFinite(otrosActivosCorrientes)) {
+    const knownCurrentAssets = sumFinite([cuentasPorCobrar, inventario, activosBiologicosCp, impuestosAFavor]);
+    if (Number.isFinite(activosCorrientes) && Number.isFinite(knownCurrentAssets)) {
+      otrosActivosCorrientes = Math.max(0, activosCorrientes - knownCurrentAssets);
+    }
+  }
+
+  const activosWkCalc = sumFinite([cuentasPorCobrar, inventario, activosBiologicosCp, impuestosAFavor, otrosActivosCorrientes]);
+  const activosWk = Number.isFinite(activosWkCalc) ? activosWkCalc : asPositive(activosCorrientes);
+
+  let proveedores = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.proveedores));
+  let obligacionesLaborales = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.obligaciones_laborales));
+  let impuestosPorPagar = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.impuestos_por_pagar));
+  let provisionesCp = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.provisiones_cp));
+
+  const pasivosWkCalc = sumFinite([proveedores, obligacionesLaborales, impuestosPorPagar, provisionesCp]);
+  const pasivosWk = Number.isFinite(pasivosWkCalc) ? pasivosWkCalc : asPositive(pasivosCorrientes);
+
+  const capitalTrabajoNetoCalc =
+    Number.isFinite(activosWk) && Number.isFinite(pasivosWk)
+      ? activosWk - pasivosWk
+      : null;
+  const capitalTrabajoNeto = Number.isFinite(capitalTrabajoNetoCalc) ? capitalTrabajoNetoCalc : safe(capitalNetoTrabajo);
+
+  const ppye = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.ppye));
+  const intangibles = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.intangibles));
+  const activosBiologicosLp = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.activos_biologicos_lp));
+  const activosFijosCapex = sumFinite([ppye, intangibles, activosBiologicosLp]);
+
+  const inversiones = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.inversiones));
+  const intercompanies = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.intercompanies));
+  const otrasCxcNoCorrientes = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.otras_cxc_no_corrientes));
+  const otrosActivosNoCorrientes = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.otros_activos_no_corrientes));
+  const otrosActivosNoOp = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.otros_activos_no_op));
+
+  const otrosPasivos = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.otros_pasivos));
+  const otrosPasivosNoOp = asPositive(findValue(concepts, WORKING_CAPITAL_MODEL_PATTERNS.otros_pasivos_no_op));
+
+  const otrosActivosNoOpTotal = sumFinite([
+    inversiones,
+    intercompanies,
+    otrasCxcNoCorrientes,
+    otrosActivosNoCorrientes,
+    otrosActivosNoOp
+  ]);
+  const otrosPasivosNoOpTotal = sumFinite([otrosPasivos, otrosPasivosNoOp]);
+  const hasOaopSignal = [otrosActivosNoOpTotal, otrosPasivosNoOpTotal].some((v) => Number.isFinite(v));
+  const oaopNeto = hasOaopSignal ? num0(otrosActivosNoOpTotal) - num0(otrosPasivosNoOpTotal) : null;
+
+  return {
+    cuentas_por_cobrar: cuentasPorCobrar,
+    inventario,
+    activos_biologicos_cp: activosBiologicosCp,
+    impuestos_a_favor: impuestosAFavor,
+    otros_activos_corrientes: otrosActivosCorrientes,
+    activos_wk: activosWk,
+    proveedores,
+    obligaciones_laborales: obligacionesLaborales,
+    impuestos_por_pagar: impuestosPorPagar,
+    provisiones_cp: provisionesCp,
+    pasivos_wk: pasivosWk,
+    capital_trabajo_neto: capitalTrabajoNeto,
+    ppye,
+    intangibles,
+    activos_biologicos_lp: activosBiologicosLp,
+    activos_fijos_capex: activosFijosCapex,
+    da: depAmort,
+    inversiones,
+    intercompanies,
+    otras_cxc_no_corrientes: otrasCxcNoCorrientes,
+    otros_activos_no_corrientes: otrosActivosNoCorrientes,
+    otros_activos_no_op: otrosActivosNoOp,
+    otros_pasivos: otrosPasivos,
+    otros_pasivos_no_op: otrosPasivosNoOp,
+    oaop_neto: oaopNeto
   };
 }
 
@@ -2720,6 +2932,7 @@ function renderStatementTables() {
   ]);
 
   buildCashflowBridgeTable(years);
+  buildWorkingCapitalModelTable(years);
 }
 
 function renderExternalIncomeTable() {
@@ -2785,6 +2998,10 @@ function formatExternalIncomeValue(value, kind) {
   return fmtNum(value, 3);
 }
 
+function formatMoneyOrNd(value) {
+  return Number.isFinite(value) ? fmtMoney(value) : "N/D";
+}
+
 function renderMetricTable() {
   const years = [...state.years].sort((a, b) => b - a);
   const rows = RATIO_ORDER.map((key) => {
@@ -2822,6 +3039,86 @@ function buildCashflowBridgeTable(years) {
     return `<tr><td>${label}</td>${cols}</tr>`;
   }).join("");
   dom.cashTable.innerHTML = `${thead}<tbody>${bodyRows}</tbody>`;
+}
+
+function buildWorkingCapitalModelTable(years) {
+  if (!dom.wkModelTable) return;
+  const byYear = new Map(years.map((year) => [year, workingCapitalModelForYear(year)]));
+  const colsCount = years.length + 1;
+  const rowDefs = [
+    { type: "section", label: "Capital de trabajo neto" },
+    { label: "Cuentas por cobrar", key: "cuentas_por_cobrar" },
+    { label: "Inventario", key: "inventario" },
+    { label: "Activos biologicos CP", key: "activos_biologicos_cp" },
+    { label: "Impuestos a favor", key: "impuestos_a_favor" },
+    { label: "Otros activos corrientes", key: "otros_activos_corrientes" },
+    { label: "Activos Wk", key: "activos_wk", className: "wk-model-total" },
+    { label: "Proveedores", key: "proveedores" },
+    { label: "Obligaciones laborales", key: "obligaciones_laborales" },
+    { label: "Impuestos por pagar", key: "impuestos_por_pagar" },
+    { label: "Provisiones", key: "provisiones_cp" },
+    { label: "Pasivos Wk", key: "pasivos_wk", className: "wk-model-total" },
+    { label: "Capital de trabajo neto", key: "capital_trabajo_neto", className: "wk-model-total" },
+    { label: "Delta Capital de trabajo neto", key: "delta_capital_trabajo_neto", className: "wk-model-delta" },
+    { type: "section", label: "Activos largo plazo" },
+    { label: "PPyE", key: "ppye" },
+    { label: "Intangibles", key: "intangibles" },
+    { label: "Activos biologicos LP", key: "activos_biologicos_lp" },
+    { label: "Activos fijos y CapEx", key: "activos_fijos_capex", className: "wk-model-total" },
+    { label: "Delta CapEx", key: "delta_capex", className: "wk-model-delta" },
+    { label: "D&A", key: "da", className: "wk-model-delta" },
+    { type: "section", label: "Otros activos y otros pasivos" },
+    { label: "Inversiones", key: "inversiones" },
+    { label: "Intercompanies", key: "intercompanies" },
+    { label: "Otras CxC no corrientes", key: "otras_cxc_no_corrientes" },
+    { label: "Otros activos no corrientes", key: "otros_activos_no_corrientes" },
+    { label: "Otros activos no op.", key: "otros_activos_no_op" },
+    { label: "Otros pasivos", key: "otros_pasivos" },
+    { label: "Otros pasivos no op.", key: "otros_pasivos_no_op" },
+    { label: "OAOP, neto", key: "oaop_neto", className: "wk-model-total" },
+    { label: "Delta OAOP, neto", key: "delta_oaop_neto", className: "wk-model-delta" }
+  ];
+
+  const thead = `<thead><tr><th>Concepto</th>${years.map((y) => `<th>${y}</th>`).join("")}</tr></thead>`;
+  const bodyRows = rowDefs.map((row) => {
+    if (row.type === "section") {
+      return `<tr class="wk-model-section"><td colspan="${colsCount}">${row.label}</td></tr>`;
+    }
+    const cols = years.map((year) => {
+      const value = byYear.get(year)?.[row.key];
+      return `<td>${formatMoneyOrNd(value)}</td>`;
+    }).join("");
+    const cls = row.className ? ` class="${row.className}"` : "";
+    return `<tr${cls}><td>${row.label}</td>${cols}</tr>`;
+  }).join("");
+
+  dom.wkModelTable.innerHTML = `${thead}<tbody>${bodyRows}</tbody>`;
+}
+
+function workingCapitalModelForYear(year) {
+  const current = state.snapshots[year] || {};
+  const prev = previousSnapshotForYear(year);
+  const currModel = current?.wk_model || {};
+  const prevModel = prev?.wk_model || {};
+  const deltaCapitalTrabajoNeto =
+    Number.isFinite(currModel?.capital_trabajo_neto) && Number.isFinite(prevModel?.capital_trabajo_neto)
+      ? currModel.capital_trabajo_neto - prevModel.capital_trabajo_neto
+      : null;
+  const deltaCapex =
+    Number.isFinite(currModel?.activos_fijos_capex) && Number.isFinite(prevModel?.activos_fijos_capex)
+      ? currModel.activos_fijos_capex - prevModel.activos_fijos_capex
+      : null;
+  const deltaOaopNeto =
+    Number.isFinite(currModel?.oaop_neto) && Number.isFinite(prevModel?.oaop_neto)
+      ? currModel.oaop_neto - prevModel.oaop_neto
+      : null;
+
+  return {
+    ...currModel,
+    delta_capital_trabajo_neto: deltaCapitalTrabajoNeto,
+    delta_capex: deltaCapex,
+    delta_oaop_neto: deltaOaopNeto
+  };
 }
 
 function cashBridgeForYear(year) {
@@ -3966,6 +4263,11 @@ function buildExternalContextPayload(question) {
       deuda_ebitda: nullable(snap?.ratios?.deuda_ebitda),
       margen_ebitda_pct: nullable(snap?.ratios?.margen_ebitda),
       margen_neto_pct: nullable(snap?.ratios?.margen_neto),
+      capital_trabajo_neto: nullable(snap?.wk_model?.capital_trabajo_neto),
+      activos_wk: nullable(snap?.wk_model?.activos_wk),
+      pasivos_wk: nullable(snap?.wk_model?.pasivos_wk),
+      delta_capex_aprox: nullable(workingCapitalModelForYear(year)?.delta_capex),
+      oaop_neto: nullable(snap?.wk_model?.oaop_neto),
       warnings: Array.isArray(snap?.warnings) ? snap.warnings.slice(0, 12) : []
     };
   });
@@ -3996,6 +4298,10 @@ function buildExternalContextPayload(question) {
       deuda_ebitda: nullable(latestSnap?.ratios?.deuda_ebitda),
       margen_ebitda_pct: nullable(latestSnap?.ratios?.margen_ebitda),
       margen_neto_pct: nullable(latestSnap?.ratios?.margen_neto),
+      capital_trabajo_neto: nullable(latestSnap?.wk_model?.capital_trabajo_neto),
+      activos_wk: nullable(latestSnap?.wk_model?.activos_wk),
+      pasivos_wk: nullable(latestSnap?.wk_model?.pasivos_wk),
+      oaop_neto: nullable(latestSnap?.wk_model?.oaop_neto),
       z_altman: nullable(latestSnap?.metrics?.z_altman),
       warnings: Array.isArray(latestSnap?.warnings) ? latestSnap.warnings.slice(0, 20) : []
     } : null,
@@ -5549,6 +5855,8 @@ function buildPdfReportNode() {
         ${cloneHtmlBlock(dom.cashTable)}
       </div>
     </div>
+    <h3>Modelo capital de trabajo (Estrategia en Accion)</h3>
+    ${cloneHtmlBlock(dom.wkModelTable)}
   `;
 
   analysisTarget.innerHTML = `
@@ -5802,7 +6110,15 @@ function exportPayload() {
       deuda_ebitda_x: nullable(s.ratios?.deuda_ebitda),
       ebitda_costos_financieros_x: nullable(s.ratios?.ebitda_costos_financieros),
       activos_corrientes: nullable(s.balance.activos_corrientes), pasivos_corrientes: nullable(s.balance.pasivos_corrientes), activos_totales: nullable(s.balance.activos_totales), pasivos_totales: nullable(s.balance.pasivos_totales), patrimonio_total: nullable(s.balance.patrimonio_total), ganancias_acumuladas: nullable(s.balance.ganancias_acumuladas),
-      capital_neto_trabajo: nullable(s.metrics.capital_neto_trabajo), deuda: nullable(s.metrics.deuda), dias_capital_trabajo: nullable(s.metrics.dias_capital_trabajo), flujo_caja: nullable(s.metrics.flujo_caja), z_altman: nullable(s.metrics.z_altman)
+      capital_neto_trabajo: nullable(s.metrics.capital_neto_trabajo), deuda: nullable(s.metrics.deuda), dias_capital_trabajo: nullable(s.metrics.dias_capital_trabajo), flujo_caja: nullable(s.metrics.flujo_caja), z_altman: nullable(s.metrics.z_altman),
+      wk_cuentas_por_cobrar: nullable(s.wk_model?.cuentas_por_cobrar),
+      wk_inventario: nullable(s.wk_model?.inventario),
+      wk_activos_wk: nullable(s.wk_model?.activos_wk),
+      wk_pasivos_wk: nullable(s.wk_model?.pasivos_wk),
+      wk_capital_trabajo_neto: nullable(s.wk_model?.capital_trabajo_neto),
+      wk_activos_fijos_capex: nullable(s.wk_model?.activos_fijos_capex),
+      wk_oaop_neto: nullable(s.wk_model?.oaop_neto),
+      wk_da: nullable(s.wk_model?.da)
     };
   });
 
@@ -5824,7 +6140,8 @@ function exportPayload() {
         acc[y] = state.snapshots[y]?.audit || {};
         return acc;
       }, {}),
-    external_income_statement: exportExternalIncomePayload()
+    external_income_statement: exportExternalIncomePayload(),
+    working_capital_model: exportWorkingCapitalModelPayload()
   };
 }
 
@@ -5852,6 +6169,51 @@ function exportExternalIncomePayload() {
       property: measure.property,
       kind: measure.kind
     })),
+    by_year: byYear
+  };
+}
+
+function exportWorkingCapitalModelPayload() {
+  const years = [...state.years].sort((a, b) => a - b);
+  if (!years.length) return null;
+
+  const byYear = {};
+  years.forEach((year) => {
+    const row = workingCapitalModelForYear(year);
+    byYear[year] = {
+      cuentas_por_cobrar: nullable(row?.cuentas_por_cobrar),
+      inventario: nullable(row?.inventario),
+      activos_biologicos_cp: nullable(row?.activos_biologicos_cp),
+      impuestos_a_favor: nullable(row?.impuestos_a_favor),
+      otros_activos_corrientes: nullable(row?.otros_activos_corrientes),
+      activos_wk: nullable(row?.activos_wk),
+      proveedores: nullable(row?.proveedores),
+      obligaciones_laborales: nullable(row?.obligaciones_laborales),
+      impuestos_por_pagar: nullable(row?.impuestos_por_pagar),
+      provisiones_cp: nullable(row?.provisiones_cp),
+      pasivos_wk: nullable(row?.pasivos_wk),
+      capital_trabajo_neto: nullable(row?.capital_trabajo_neto),
+      delta_capital_trabajo_neto: nullable(row?.delta_capital_trabajo_neto),
+      ppye: nullable(row?.ppye),
+      intangibles: nullable(row?.intangibles),
+      activos_biologicos_lp: nullable(row?.activos_biologicos_lp),
+      activos_fijos_capex: nullable(row?.activos_fijos_capex),
+      delta_capex: nullable(row?.delta_capex),
+      da: nullable(row?.da),
+      inversiones: nullable(row?.inversiones),
+      intercompanies: nullable(row?.intercompanies),
+      otras_cxc_no_corrientes: nullable(row?.otras_cxc_no_corrientes),
+      otros_activos_no_corrientes: nullable(row?.otros_activos_no_corrientes),
+      otros_activos_no_op: nullable(row?.otros_activos_no_op),
+      otros_pasivos: nullable(row?.otros_pasivos),
+      otros_pasivos_no_op: nullable(row?.otros_pasivos_no_op),
+      oaop_neto: nullable(row?.oaop_neto),
+      delta_oaop_neto: nullable(row?.delta_oaop_neto)
+    };
+  });
+
+  return {
+    source: "modelo_capital_trabajo_estrategia_en_accion",
     by_year: byYear
   };
 }
