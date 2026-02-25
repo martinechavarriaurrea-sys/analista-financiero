@@ -893,6 +893,18 @@ function initialExternalIncomeState() {
   };
 }
 
+function initialExternalWorkingCapitalState() {
+  return {
+    loading: false,
+    error: "",
+    nit: "",
+    measures: [],
+    byYear: {},
+    fetchedAt: null,
+    context: null
+  };
+}
+
 const state = {
   busy: false,
   botBusy: false,
@@ -904,6 +916,7 @@ const state = {
   charts: [],
   auditLog: {},
   externalIncome: initialExternalIncomeState(),
+  externalWorkingCapital: initialExternalWorkingCapitalState(),
   externalIncomeRequestId: 0,
   botHistory: [],
   botThinkingTurns: [],
@@ -1126,6 +1139,7 @@ function resetUi(options = {}) {
   state.snapshots = {};
   state.auditLog = {};
   state.externalIncome = initialExternalIncomeState();
+  state.externalWorkingCapital = initialExternalWorkingCapitalState();
   state.externalIncomeRequestId += 1;
   state.botHistory = [];
   state.botThinkingTurns = [];
@@ -1249,6 +1263,7 @@ function clearAnalysisUi() {
   state.snapshots = {};
   state.auditLog = {};
   state.externalIncome = initialExternalIncomeState();
+  state.externalWorkingCapital = initialExternalWorkingCapitalState();
   state.externalIncomeRequestId += 1;
   destroyCharts();
   dom.yearsContainer.innerHTML = "";
@@ -1685,9 +1700,317 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = CONFIG.timeoutMs)
   }
 }
 
+function externalRowForYear(byYear, year) {
+  if (!byYear || typeof byYear !== "object") return {};
+  return byYear?.[year] || byYear?.[String(year)] || {};
+}
+
+function hasExternalFiniteValues(row) {
+  return !!row && Object.values(row).some((value) => Number.isFinite(value));
+}
+
+function pickExternalMetricValue(row, aliases) {
+  if (!row || typeof row !== "object") return null;
+  const pairs = Object.entries(row || {}).filter(([, value]) => Number.isFinite(value));
+  if (!pairs.length) return null;
+
+  for (const alias of aliases || []) {
+    if (Number.isFinite(row?.[alias])) return row[alias];
+  }
+
+  const normalized = pairs.map(([key, value]) => ({ key, value, norm: normalizeLooseKey(key) }));
+  for (const alias of aliases || []) {
+    const normAlias = normalizeLooseKey(alias);
+    if (!normAlias) continue;
+    const exact = normalized.find((item) => item.norm === normAlias);
+    if (exact) return exact.value;
+  }
+  for (const alias of aliases || []) {
+    const normAlias = normalizeLooseKey(alias);
+    if (!normAlias) continue;
+    const includes = normalized.find((item) => item.norm.includes(normAlias) || normAlias.includes(item.norm));
+    if (includes) return includes.value;
+  }
+  return null;
+}
+
+function externalPctToPercent(value) {
+  if (!Number.isFinite(value)) return null;
+  return Math.abs(value) <= 2 ? value * 100 : value;
+}
+
+function inferExternalMoneyScale(years) {
+  const candidateScales = [1, 1000, 1000000];
+  const comparisons = [];
+
+  years.forEach((year) => {
+    const snapshot = state.snapshots?.[year];
+    if (!snapshot) return;
+    const incomeRow = externalRowForYear(state.externalIncome?.byYear, year);
+    const pairs = [
+      [snapshot?.income?.ingresos, pickExternalMetricValue(incomeRow, ["ingresos", "a. ingresos"])],
+      [snapshot?.income?.ebitda, pickExternalMetricValue(incomeRow, ["ebitda", "l. ebitda"])],
+      [snapshot?.metrics?.deuda, pickExternalMetricValue(incomeRow, ["deuda", "q. deuda"])],
+      [snapshot?.income?.utilidad_neta, pickExternalMetricValue(incomeRow, ["utilidad_neta", "v. utilidad neta"])]
+    ];
+    pairs.forEach(([localValue, externalValue]) => {
+      if (!Number.isFinite(localValue) || !Number.isFinite(externalValue) || externalValue === 0) return;
+      comparisons.push([Math.abs(localValue), Math.abs(externalValue)]);
+    });
+  });
+
+  if (!comparisons.length) return 1000;
+
+  let bestScale = 1000;
+  let bestError = Infinity;
+  candidateScales.forEach((scale) => {
+    const errors = comparisons.map(([localValue, externalValue]) => {
+      const scaled = externalValue * scale;
+      return Math.abs(localValue - scaled) / Math.max(1, Math.abs(localValue));
+    });
+    const avgError = errors.reduce((acc, value) => acc + value, 0) / errors.length;
+    if (avgError < bestError) {
+      bestError = avgError;
+      bestScale = scale;
+    }
+  });
+
+  return bestScale;
+}
+
+function syncExternalOverridesToSnapshots(years) {
+  const incomeByYear = state.externalIncome?.byYear || {};
+  const wkByYear = state.externalWorkingCapital?.byYear || {};
+  const moneyScale = inferExternalMoneyScale(years);
+  let changed = false;
+
+  years.forEach((year) => {
+    const snapshot = state.snapshots?.[year];
+    if (!snapshot) return;
+
+    const incomeRow = externalRowForYear(incomeByYear, year);
+    const wkRow = externalRowForYear(wkByYear, year);
+
+    const ingresos = pickExternalMetricValue(incomeRow, ["ingresos", "a. ingresos"]);
+    const utilidadBruta = pickExternalMetricValue(incomeRow, ["utilidad_bruta", "c. utilidad bruta"]);
+    const gastosOperacionales = pickExternalMetricValue(incomeRow, ["gastos_operacionales", "g. total gastos operacionales"]);
+    const ebitda = pickExternalMetricValue(incomeRow, ["ebitda", "l. ebitda"]);
+    const utilidadNeta = pickExternalMetricValue(incomeRow, ["utilidad_neta", "v. utilidad neta"]);
+    const deuda = pickExternalMetricValue(incomeRow, ["deuda", "q. deuda"]);
+    const costosFinancieros = pickExternalMetricValue(incomeRow, ["costos_financieros", "n. costos financieros"]);
+    const deltaIngresos = pickExternalMetricValue(incomeRow, ["delta_ingresos", "delta ingresos", "î” ingresos", "d ingresos"]);
+    const margenBruto = pickExternalMetricValue(incomeRow, ["margen_bruto", "margen bruto"]);
+    const margenEbitda = pickExternalMetricValue(incomeRow, ["margen_ebitda", "margen ebitda"]);
+    const gastosSobreIngresos = pickExternalMetricValue(incomeRow, ["gastos_operacionales_ingresos", "gastos operacionales/ingresos"]);
+    const margenNeto = pickExternalMetricValue(incomeRow, ["margen_neto", "margen neto"]);
+    const deudaEbitda = pickExternalMetricValue(incomeRow, ["deuda_ebitda", "c. deuda/ebitda", "deuda/ebitda"]);
+    const ebitdaCostosFinancieros = pickExternalMetricValue(incomeRow, ["ebitda_costos_financieros", "ebitda/costos financieros"]);
+
+    if (Number.isFinite(ingresos)) {
+      const scaled = ingresos * moneyScale;
+      snapshot.income.ingresos = scaled;
+      snapshot.metrics.ingresos = scaled;
+      changed = true;
+    }
+    if (Number.isFinite(utilidadBruta)) {
+      snapshot.income.utilidad_bruta = utilidadBruta * moneyScale;
+      changed = true;
+    }
+    if (Number.isFinite(gastosOperacionales)) {
+      const scaled = gastosOperacionales * moneyScale;
+      snapshot.income.gastos_operacionales = scaled;
+      snapshot.metrics.gastos_operacionales = scaled;
+      changed = true;
+    }
+    if (Number.isFinite(ebitda)) {
+      const scaled = ebitda * moneyScale;
+      snapshot.income.ebitda = scaled;
+      snapshot.metrics.ebitda = scaled;
+      changed = true;
+    }
+    if (Number.isFinite(utilidadNeta)) {
+      const scaled = utilidadNeta * moneyScale;
+      snapshot.income.utilidad_neta = scaled;
+      snapshot.metrics.utilidad_neta = scaled;
+      changed = true;
+    }
+    if (Number.isFinite(deuda)) {
+      snapshot.metrics.deuda = deuda * moneyScale;
+      changed = true;
+    }
+    if (Number.isFinite(costosFinancieros)) {
+      snapshot.income.costos_financieros = costosFinancieros * moneyScale;
+      changed = true;
+    }
+    if (Number.isFinite(deltaIngresos)) {
+      snapshot.ratios.crecimiento_ingresos_yoy = externalPctToPercent(deltaIngresos);
+      changed = true;
+    }
+    if (Number.isFinite(margenBruto)) {
+      snapshot.ratios.margen_bruto = externalPctToPercent(margenBruto);
+      changed = true;
+    }
+    if (Number.isFinite(margenEbitda)) {
+      snapshot.ratios.margen_ebitda = externalPctToPercent(margenEbitda);
+      changed = true;
+    }
+    if (Number.isFinite(gastosSobreIngresos)) {
+      snapshot.ratios.gastos_operacionales_sobre_ingresos = externalPctToPercent(gastosSobreIngresos);
+      changed = true;
+    }
+    if (Number.isFinite(margenNeto)) {
+      snapshot.ratios.margen_neto = externalPctToPercent(margenNeto);
+      changed = true;
+    }
+    if (Number.isFinite(deudaEbitda)) {
+      snapshot.ratios.deuda_ebitda = deudaEbitda;
+      changed = true;
+    }
+    if (Number.isFinite(ebitdaCostosFinancieros)) {
+      snapshot.ratios.ebitda_costos_financieros = ebitdaCostosFinancieros;
+      changed = true;
+    }
+
+    const wkMapping = [
+      ["cuentas_por_cobrar", ["cuentas_por_cobrar", "c. cuentas por cobrar"]],
+      ["inventario", ["inventario", "d. inventario"]],
+      ["activos_biologicos_cp", ["activos_biologicos_cp", "e. activos biologicos cp"]],
+      ["impuestos_a_favor", ["impuestos_a_favor", "f. impuestos a favor"]],
+      ["otros_activos_corrientes", ["otros_activos_corrientes", "g. otros activos corrientes"]],
+      ["activos_wk", ["activos_wk", "a. activos wk"]],
+      ["proveedores", ["proveedores", "r. proveedores"]],
+      ["obligaciones_laborales", ["obligaciones_laborales", "s. obligaciones laborales"]],
+      ["impuestos_por_pagar", ["impuestos_por_pagar", "t. impuestos por pagar"]],
+      ["provisiones_cp", ["provisiones_cp", "u. provisiones"]],
+      ["pasivos_wk", ["pasivos_wk", "b. pasivos wk"]],
+      ["capital_trabajo_neto", ["capital_trabajo_neto", "c. capital de trabajo neto"]],
+      ["delta_capital_trabajo_neto", ["delta_capital_trabajo_neto", "delta capital de trabajo neto", "î” capital de trabajo neto"]],
+      ["ppye", ["ppye", "i. ppye"]],
+      ["intangibles", ["intangibles", "j. intangibles"]],
+      ["activos_biologicos_lp", ["activos_biologicos_lp", "k. activos biologicos lp"]],
+      ["activos_fijos_capex", ["activos_fijos_capex", "d. activos fijos y capex"]],
+      ["delta_capex", ["delta_capex", "delta capex", "î” capex"]],
+      ["da", ["da", "k. d&a", "d&a"]],
+      ["inversiones", ["inversiones", "b. inversiones"]],
+      ["intercompanies", ["intercompanies", "l. intercompanies"]],
+      ["otras_cxc_no_corrientes", ["otras_cxc_no_corrientes", "m. otras cxc no corrientes"]],
+      ["otros_activos_no_corrientes", ["otros_activos_no_corrientes", "n. otros activos no corrientes"]],
+      ["otros_activos_no_op", ["otros_activos_no_op", "e. otros activos no operacionales"]],
+      ["otros_pasivos", ["otros_pasivos", "v. otros pasivos"]],
+      ["otros_pasivos_no_op", ["otros_pasivos_no_op", "f. otros pasivos no operacionales"]],
+      ["oaop_neto", ["oaop_neto", "g. oaop, neto", "oaop, neto"]],
+      ["delta_oaop_neto", ["delta_oaop_neto", "delta oaop, neto", "î” oaop, neto"]]
+    ];
+
+    snapshot.wk_model = snapshot.wk_model || {};
+    wkMapping.forEach(([targetKey, aliases]) => {
+      const value = pickExternalMetricValue(wkRow, aliases);
+      if (Number.isFinite(value)) {
+        snapshot.wk_model[targetKey] = value * moneyScale;
+        changed = true;
+      }
+    });
+
+    if (Number.isFinite(snapshot.wk_model.capital_trabajo_neto)) {
+      snapshot.metrics.capital_neto_trabajo = snapshot.wk_model.capital_trabajo_neto;
+      const ingresosRef = Number.isFinite(snapshot.metrics.ingresos) ? snapshot.metrics.ingresos : snapshot.income.ingresos;
+      snapshot.metrics.dias_capital_trabajo =
+        Number.isFinite(ingresosRef) && ingresosRef !== 0
+          ? (snapshot.metrics.capital_neto_trabajo / ingresosRef) * 365
+          : null;
+    }
+  });
+
+  if (changed) {
+    renderKpis();
+    renderStatementTables();
+    renderMetricTable();
+    renderDeepIncomeAnalysis();
+    renderFinancialSummaries();
+    renderCharts();
+    notifyBotDataReady();
+  }
+  return changed;
+}
+
+async function fetchExternalPowerBiFromAdvisor(nit, years) {
+  const response = await fetchWithTimeout(
+    advisorApiUrl("/api/advisor/external/company"),
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nit, years })
+    },
+    HIDDEN_ADVISOR_TIMEOUT_MS + 15000
+  );
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok || payload?.ok === false) {
+    throw new Error(cleanText(payload?.error || `HTTP ${response.status}`));
+  }
+  return payload;
+}
+
+function applyAdvisorExternalPayload(payload, nit, years) {
+  const incomeMeasuresRaw = Array.isArray(payload?.income?.measures) ? payload.income.measures : [];
+  const wkMeasuresRaw = Array.isArray(payload?.working_capital?.measures) ? payload.working_capital.measures : [];
+  const incomeMeasures = incomeMeasuresRaw.map((measure) => ({
+    ...measure,
+    property: cleanText(measure?.id || measure?.property || ""),
+    label: cleanText(measure?.label || measure?.id || measure?.property || ""),
+    kind: cleanText(measure?.kind || "money")
+  })).filter((measure) => measure.property);
+  const wkMeasures = wkMeasuresRaw.map((measure) => ({
+    ...measure,
+    property: cleanText(measure?.id || measure?.property || ""),
+    label: cleanText(measure?.label || measure?.id || measure?.property || ""),
+    kind: cleanText(measure?.kind || "money")
+  })).filter((measure) => measure.property);
+
+  const incomeByYear = {};
+  const wkByYear = {};
+  years.forEach((year) => {
+    const incomeRowRaw = externalRowForYear(payload?.income?.by_year, year);
+    const wkRowRaw = externalRowForYear(payload?.working_capital?.by_year, year);
+    incomeByYear[year] = { ...incomeRowRaw };
+    wkByYear[year] = { ...wkRowRaw };
+  });
+
+  const hasIncomeData = years.some((year) => hasExternalFiniteValues(incomeByYear[year]));
+  const hasWkData = years.some((year) => hasExternalFiniteValues(wkByYear[year]));
+
+  state.externalIncome = {
+    loading: false,
+    error: hasIncomeData ? "" : "No se encontraron datos externos comparables para este NIT.",
+    nit,
+    measures: incomeMeasures,
+    byYear: incomeByYear,
+    fetchedAt: payload?.fetched_at || new Date().toISOString(),
+    context: {
+      reportUrl: payload?.report_url || EXTERNAL_INCOME_CONFIG.reportUrl,
+      viewUrl: payload?.view_url || "",
+      selectedYear: Number(payload?.selected_year) || null,
+      source: payload?.source || "estrategiaenaccion_powerbi"
+    }
+  };
+
+  state.externalWorkingCapital = {
+    loading: false,
+    error: hasWkData ? "" : "No se encontraron datos externos de capital de trabajo para este NIT.",
+    nit,
+    measures: wkMeasures,
+    byYear: wkByYear,
+    fetchedAt: payload?.fetched_at || new Date().toISOString(),
+    context: {
+      reportUrl: payload?.report_url || EXTERNAL_INCOME_CONFIG.reportUrl,
+      viewUrl: payload?.view_url || "",
+      selectedYear: Number(payload?.selected_year) || null,
+      source: payload?.source || "estrategiaenaccion_powerbi"
+    }
+  };
+}
+
 async function refreshExternalIncomeStatement() {
   if (!state.selectedCompany || !state.years.length) return;
-  if (!dom.extIncomeTable || !dom.extIncomeStatus) return;
   const nit = normalizeNit(state.selectedCompany.nit);
   if (!nit) return;
 
@@ -1699,13 +2022,31 @@ async function refreshExternalIncomeStatement() {
     error: "",
     nit
   };
+  state.externalWorkingCapital = {
+    ...(state.externalWorkingCapital || initialExternalWorkingCapitalState()),
+    loading: true,
+    error: "",
+    nit
+  };
   renderExternalIncomeTable();
+
+  const years = [...state.years].sort((a, b) => b - a);
+  let advisorError = null;
+  try {
+    const advisorPayload = await fetchExternalPowerBiFromAdvisor(nit, years);
+    if (requestId !== state.externalIncomeRequestId) return;
+    applyAdvisorExternalPayload(advisorPayload, nit, years);
+    syncExternalOverridesToSnapshots(years);
+    renderExternalIncomeTable();
+    return;
+  } catch (error) {
+    advisorError = error;
+  }
 
   try {
     const ctx = await getExternalIncomePowerBiContext();
     if (requestId !== state.externalIncomeRequestId) return;
 
-    const years = [...state.years].sort((a, b) => b - a);
     const byYear = {};
     for (const year of years) {
       try {
@@ -1734,12 +2075,25 @@ async function refreshExternalIncomeStatement() {
         selectedYear: ctx.selectedYear
       }
     };
+    state.externalWorkingCapital = {
+      ...initialExternalWorkingCapitalState(),
+      nit
+    };
+    syncExternalOverridesToSnapshots(years);
   } catch (error) {
     if (requestId !== state.externalIncomeRequestId) return;
+    const parts = [];
+    if (advisorError) parts.push(cleanText(advisorError?.message || advisorError));
+    parts.push(cleanText(error?.message || error));
     state.externalIncome = {
       ...initialExternalIncomeState(),
       nit,
-      error: `No se pudo cargar estado de resultados externo: ${cleanText(error?.message || error)}`
+      error: `No se pudo cargar estado de resultados externo: ${parts.filter(Boolean).join(" | ")}`
+    };
+    state.externalWorkingCapital = {
+      ...initialExternalWorkingCapitalState(),
+      nit,
+      error: state.externalIncome.error
     };
   }
 
@@ -2372,6 +2726,10 @@ function runAnalysis() {
   dom.exportCsvBtn.disabled = false;
   dom.exportJsonBtn.disabled = false;
   dom.exportPdfBtn.disabled = false;
+
+  refreshExternalIncomeStatement().catch((error) => {
+    console.warn("[ExternalIncome] No se pudo actualizar datos externos", error?.message || error);
+  });
 }
 
 function attachIncomeRatios(snapshots) {
@@ -2974,8 +3332,7 @@ function renderExternalIncomeTable() {
 
   const thead = `<thead><tr><th>Variable externa</th>${years.map((y) => `<th>${y}</th>`).join("")}</tr></thead>`;
   if (!measures.length) {
-    const emptyCols = years.map(() => "<td>N/D</td>").join("");
-    dom.extIncomeTable.innerHTML = `${thead}<tbody><tr><td>Sin variables disponibles</td>${emptyCols}</tr></tbody>`;
+    dom.extIncomeTable.innerHTML = `${thead}<tbody></tbody>`;
     return;
   }
 
@@ -3100,18 +3457,27 @@ function workingCapitalModelForYear(year) {
   const prev = previousSnapshotForYear(year);
   const currModel = current?.wk_model || {};
   const prevModel = prev?.wk_model || {};
-  const deltaCapitalTrabajoNeto =
-    Number.isFinite(currModel?.capital_trabajo_neto) && Number.isFinite(prevModel?.capital_trabajo_neto)
-      ? currModel.capital_trabajo_neto - prevModel.capital_trabajo_neto
-      : null;
-  const deltaCapex =
-    Number.isFinite(currModel?.activos_fijos_capex) && Number.isFinite(prevModel?.activos_fijos_capex)
-      ? currModel.activos_fijos_capex - prevModel.activos_fijos_capex
-      : null;
-  const deltaOaopNeto =
-    Number.isFinite(currModel?.oaop_neto) && Number.isFinite(prevModel?.oaop_neto)
-      ? currModel.oaop_neto - prevModel.oaop_neto
-      : null;
+  const deltaCapitalTrabajoNeto = Number.isFinite(currModel?.delta_capital_trabajo_neto)
+    ? currModel.delta_capital_trabajo_neto
+    : (
+      Number.isFinite(currModel?.capital_trabajo_neto) && Number.isFinite(prevModel?.capital_trabajo_neto)
+        ? currModel.capital_trabajo_neto - prevModel.capital_trabajo_neto
+        : null
+    );
+  const deltaCapex = Number.isFinite(currModel?.delta_capex)
+    ? currModel.delta_capex
+    : (
+      Number.isFinite(currModel?.activos_fijos_capex) && Number.isFinite(prevModel?.activos_fijos_capex)
+        ? currModel.activos_fijos_capex - prevModel.activos_fijos_capex
+        : null
+    );
+  const deltaOaopNeto = Number.isFinite(currModel?.delta_oaop_neto)
+    ? currModel.delta_oaop_neto
+    : (
+      Number.isFinite(currModel?.oaop_neto) && Number.isFinite(prevModel?.oaop_neto)
+        ? currModel.oaop_neto - prevModel.oaop_neto
+        : null
+    );
 
   return {
     ...currModel,

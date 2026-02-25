@@ -27,12 +27,68 @@ const SESSION_LIMIT = Math.max(100, Math.min(20_000, Number(process.env.ADVISOR_
 const SESSION_PERSIST = toBool(process.env.ADVISOR_SESSION_PERSIST || "1");
 const SESSION_STORE_FILE = cleanText(process.env.ADVISOR_SESSION_STORE_FILE || path.join(process.cwd(), ".advisor_sessions.json"));
 const SERVER_CONFIG_TOKEN = cleanText(process.env.ADVISOR_SERVER_CONFIG_TOKEN || "");
+const EXTERNAL_PBI_CONFIG = {
+  reportUrl: cleanText(process.env.EXTERNAL_PBI_REPORT_URL || "https://www.estrategiaenaccion.com/es/reportes"),
+  timeoutMs: Math.max(10_000, Number(process.env.EXTERNAL_PBI_TIMEOUT_MS || 45_000)),
+  retries: Math.max(1, Number(process.env.EXTERNAL_PBI_RETRIES || 3)),
+  maxYears: Math.max(1, Math.min(8, Number(process.env.EXTERNAL_PBI_MAX_YEARS || 7)))
+};
+
+const EXTERNAL_PBI_INCOME_MEASURE_DEFS = [
+  { id: "ingresos", label: "Ingresos", kind: "money", aliases: ["a. ingresos", "ingresos"] },
+  { id: "delta_ingresos", label: "Delta ingresos", kind: "pct", aliases: ["delta ingresos", "d ingresos", "î” ingresos", "Δ ingresos"] },
+  { id: "utilidad_bruta", label: "Utilidad bruta", kind: "money", aliases: ["c. utilidad bruta", "utilidad bruta"] },
+  { id: "margen_bruto", label: "Margen bruto", kind: "pct", aliases: ["margen bruto"] },
+  { id: "gastos_operacionales", label: "Gastos operacionales", kind: "money", aliases: ["g. total gastos operacionales", "total gastos operacionales", "gastos operacionales"] },
+  { id: "gastos_operacionales_ingresos", label: "Gastos operacionales / ingresos", kind: "pct", aliases: ["gastos operacionales/ingresos"] },
+  { id: "ebitda", label: "EBITDA", kind: "money", aliases: ["l. ebitda", "ebitda"] },
+  { id: "margen_ebitda", label: "Margen EBITDA", kind: "pct", aliases: ["margen ebitda"] },
+  { id: "costos_financieros", label: "Costos financieros", kind: "money", aliases: ["n. costos financieros", "costos financieros"] },
+  { id: "utilidad_neta", label: "Utilidad neta", kind: "money", aliases: ["v. utilidad neta", "utilidad neta"] },
+  { id: "margen_neto", label: "Margen neto", kind: "pct", aliases: ["margen neto"] },
+  { id: "deuda", label: "Deuda", kind: "money", aliases: ["q. deuda", "deuda"] },
+  { id: "deuda_ebitda", label: "Deuda / EBITDA", kind: "ratio", aliases: ["c. deuda/ebitda", "deuda/ebitda"] },
+  { id: "ebitda_costos_financieros", label: "EBITDA / costos financieros", kind: "ratio", aliases: ["ebitda/costos financieros"] }
+];
+
+const EXTERNAL_PBI_WORKING_CAPITAL_MEASURE_DEFS = [
+  { id: "cuentas_por_cobrar", label: "Cuentas por cobrar", kind: "money", aliases: ["c. cuentas por cobrar", "cuentas por cobrar"] },
+  { id: "inventario", label: "Inventario", kind: "money", aliases: ["d. inventario", "inventario"] },
+  { id: "activos_biologicos_cp", label: "Activos biologicos CP", kind: "money", aliases: ["e. activos biologicos cp", "activos biologicos cp"] },
+  { id: "impuestos_a_favor", label: "Impuestos a favor", kind: "money", aliases: ["f. impuestos a favor", "impuestos a favor"] },
+  { id: "otros_activos_corrientes", label: "Otros activos corrientes", kind: "money", aliases: ["g. otros activos corrientes", "otros activos corrientes"] },
+  { id: "activos_wk", label: "Activos Wk", kind: "money", aliases: ["a. activos wk", "activos wk"] },
+  { id: "proveedores", label: "Proveedores", kind: "money", aliases: ["r. proveedores", "proveedores"] },
+  { id: "obligaciones_laborales", label: "Obligaciones laborales", kind: "money", aliases: ["s. obligaciones laborales", "obligaciones laborales"] },
+  { id: "impuestos_por_pagar", label: "Impuestos por pagar", kind: "money", aliases: ["t. impuestos por pagar", "impuestos por pagar"] },
+  { id: "provisiones_cp", label: "Provisiones", kind: "money", aliases: ["u. provisiones", "provisiones"] },
+  { id: "pasivos_wk", label: "Pasivos Wk", kind: "money", aliases: ["b. pasivos wk", "pasivos wk"] },
+  { id: "capital_trabajo_neto", label: "Capital de trabajo neto", kind: "money", aliases: ["c. capital de trabajo neto", "capital de trabajo neto"] },
+  { id: "delta_capital_trabajo_neto", label: "Delta capital de trabajo neto", kind: "money", aliases: ["delta capital de trabajo neto", "î” capital de trabajo neto", "Δ capital de trabajo neto"] },
+  { id: "ppye", label: "PPyE", kind: "money", aliases: ["i. ppye", "ppye"] },
+  { id: "intangibles", label: "Intangibles", kind: "money", aliases: ["j. intangibles", "intangibles"] },
+  { id: "activos_biologicos_lp", label: "Activos biologicos LP", kind: "money", aliases: ["k. activos biologicos lp", "activos biologicos lp"] },
+  { id: "activos_fijos_capex", label: "Activos fijos y CapEx", kind: "money", aliases: ["d. activos fijos y capex", "activos fijos y capex"] },
+  { id: "delta_capex", label: "Delta CapEx", kind: "money", aliases: ["delta capex", "î” capex", "Δ capex"] },
+  { id: "da", label: "D&A", kind: "money", aliases: ["k. d&a", "d&a"] },
+  { id: "inversiones", label: "Inversiones", kind: "money", aliases: ["b. inversiones", "inversiones"] },
+  { id: "intercompanies", label: "Intercompanies", kind: "money", aliases: ["l. intercompanies", "intercompanies"] },
+  { id: "otras_cxc_no_corrientes", label: "Otras CxC no corrientes", kind: "money", aliases: ["m. otras cxc no corrientes", "otras cxc no corrientes"] },
+  { id: "otros_activos_no_corrientes", label: "Otros activos no corrientes", kind: "money", aliases: ["n. otros activos no corrientes", "otros activos no corrientes"] },
+  { id: "otros_activos_no_op", label: "Otros activos no op.", kind: "money", aliases: ["e. otros activos no operacionales", "otros activos no operacionales", "otros activos no op"] },
+  { id: "otros_pasivos", label: "Otros pasivos", kind: "money", aliases: ["v. otros pasivos", "otros pasivos"] },
+  { id: "otros_pasivos_no_op", label: "Otros pasivos no op.", kind: "money", aliases: ["f. otros pasivos no operacionales", "otros pasivos no operacionales", "otros pasivos no op"] },
+  { id: "oaop_neto", label: "OAOP, neto", kind: "money", aliases: ["g. oaop, neto", "oaop, neto", "oaop neto"] },
+  { id: "delta_oaop_neto", label: "Delta OAOP, neto", kind: "money", aliases: ["delta oaop, neto", "î” oaop, neto", "Δ oaop, neto"] }
+];
 
 let activeModel = LLM_PROVIDER === "openai" ? `openai:${OPENAI_MODEL}` : OLLAMA_MODEL;
 let modelChecked = false;
 let debugTraceSeq = 0;
 const debugTraceStore = [];
 const sessionStore = new Map();
+let externalPowerBiContextPromise = null;
+const externalPowerBiYearCache = new Map();
 
 hydrateSessionStore();
 
@@ -142,6 +198,23 @@ async function handleAdvisorRequest(req, res) {
     sendJson(res, 200, { ok: true, cleared: prev });
     return;
   }
+  if (req.method === "POST" && url.pathname === "/api/advisor/external/company") {
+    try {
+      const body = await readJsonBody(req, BODY_LIMIT_BYTES);
+      const nit = normalizeExternalNit(body?.nit || body?.company?.nit || "");
+      if (!nit) {
+        sendJson(res, 400, { ok: false, error: "Falta nit valido para consulta externa." });
+        return;
+      }
+      const years = normalizeExternalYears(body?.years || body?.anos || body?.years_selected || body?.year);
+      const payload = await fetchExternalPowerBiCompanyPayload(nit, years);
+      sendJson(res, 200, payload);
+      return;
+    } catch (error) {
+      sendJson(res, 500, { ok: false, error: `No se pudo consultar Estrategia en Accion: ${cleanText(error?.message || error)}` });
+      return;
+    }
+  }
   if (req.method === "POST" && url.pathname === "/api/advisor") {
     try {
       const body = await readJsonBody(req, BODY_LIMIT_BYTES);
@@ -241,6 +314,558 @@ async function handleAdvisorRequest(req, res) {
     if (served) return;
   }
   sendJson(res, 404, { error: "Ruta no encontrada." });
+}
+
+function normalizeExternalNit(value) {
+  const digits = String(value || "").replace(/\D/g, "");
+  if (!digits) return "";
+  return digits.length > 9 ? digits.slice(0, 9) : digits;
+}
+
+function normalizeExternalYears(value) {
+  const raw = Array.isArray(value) ? value : [value];
+  const years = raw
+    .flatMap((item) => {
+      if (Array.isArray(item)) return item;
+      if (typeof item === "string" && item.includes(",")) return item.split(",");
+      return [item];
+    })
+    .map((item) => Number(item))
+    .filter((item) => Number.isFinite(item) && item >= 1990 && item <= 2100);
+  const unique = [...new Set(years)].sort((a, b) => b - a).slice(0, EXTERNAL_PBI_CONFIG.maxYears);
+  return unique;
+}
+
+function externalNormalizeMetricKey(value) {
+  return cleanText(value || "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/Î”/g, " delta ")
+    .replace(/[Δ∆]/g, " delta ")
+    .replace(/&/g, " and ")
+    .toLowerCase()
+    .replace(/[^a-z0-9/%]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function externalMetricKind(def) {
+  const kind = cleanText(def?.kind || "").toLowerCase();
+  if (kind === "pct" || kind === "ratio" || kind === "money") return kind;
+  return "money";
+}
+
+function externalDecodeBase64UrlJson(input) {
+  const base64 = String(input || "").replace(/-/g, "+").replace(/_/g, "/");
+  const padded = base64 + "=".repeat((4 - (base64.length % 4)) % 4);
+  const text = Buffer.from(padded, "base64").toString("utf8");
+  return JSON.parse(text);
+}
+
+function externalExtractIframeSrc(html) {
+  const match = String(html || "").match(/<iframe[^>]+src="([^"]*app\.powerbi\.com\/view\?r=[^"]+)"/i);
+  return match?.[1] || "";
+}
+
+function externalExtractResourceKey(viewUrl) {
+  if (!viewUrl) return "";
+  const parsed = new URL(viewUrl);
+  const encoded = parsed.searchParams.get("r");
+  if (!encoded) return "";
+  const payload = externalDecodeBase64UrlJson(encoded);
+  return cleanText(payload?.k || "");
+}
+
+function externalExtractClusterUri(embedHtml) {
+  const match = String(embedHtml || "").match(/var\s+resolvedClusterUri\s*=\s*'([^']+)'/i);
+  return match?.[1] || "";
+}
+
+function externalBuildApiBase(clusterUri) {
+  const parsed = new URL(clusterUri);
+  const hostParts = parsed.hostname.split(".");
+  hostParts[0] = hostParts[0].replace("-redirect", "").replace("global-", "") + "-api";
+  return `${parsed.protocol}//${hostParts.join(".")}`;
+}
+
+function externalPowerBiHeaders(resourceKey) {
+  const id1 = typeof crypto.randomUUID === "function" ? crypto.randomUUID() : `${Date.now()}_${Math.random().toString(16).slice(2)}`;
+  const id2 = typeof crypto.randomUUID === "function" ? crypto.randomUUID() : `${Date.now()}_${Math.random().toString(16).slice(2)}`;
+  return {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    ActivityId: id1,
+    RequestId: id2,
+    "X-PowerBI-ResourceKey": resourceKey
+  };
+}
+
+async function externalFetchTextWithRetry(url, maxAttempts = EXTERNAL_PBI_CONFIG.retries) {
+  let lastError = null;
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    try {
+      const response = await fetchWithTimeout(
+        url,
+        {
+          method: "GET",
+          headers: {
+            "User-Agent": "Mozilla/5.0 (compatible; hidden-financial-advisor/1.0)"
+          }
+        },
+        EXTERNAL_PBI_CONFIG.timeoutMs
+      );
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return await response.text();
+    } catch (error) {
+      lastError = error;
+      if (attempt < maxAttempts) await new Promise((resolve) => setTimeout(resolve, 250 * attempt));
+    }
+  }
+  throw lastError || new Error("No fue posible leer el reporte externo.");
+}
+
+async function externalFetchJsonWithRetry(url, options, maxAttempts = EXTERNAL_PBI_CONFIG.retries) {
+  let lastError = null;
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    try {
+      const response = await fetchWithTimeout(url, options || { method: "GET" }, EXTERNAL_PBI_CONFIG.timeoutMs);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return await response.json();
+    } catch (error) {
+      lastError = error;
+      if (attempt < maxAttempts) await new Promise((resolve) => setTimeout(resolve, 300 * attempt));
+    }
+  }
+  throw lastError || new Error("No fue posible consultar el origen externo.");
+}
+
+async function externalPowerBiQuery(apiBase, resourceKey, body, maxAttempts = EXTERNAL_PBI_CONFIG.retries) {
+  let lastError = null;
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    try {
+      return await externalFetchJsonWithRetry(
+        `${apiBase}/public/reports/querydata`,
+        {
+          method: "POST",
+          headers: externalPowerBiHeaders(resourceKey),
+          body: JSON.stringify(body)
+        },
+        1
+      );
+    } catch (error) {
+      lastError = error;
+      if (attempt < maxAttempts) await new Promise((resolve) => setTimeout(resolve, 300 * attempt));
+    }
+  }
+  throw lastError || new Error("No fue posible ejecutar consulta externa.");
+}
+
+function externalParsePowerBiRows(response) {
+  const result = response?.results?.[0]?.result?.data;
+  const selectMeta = result?.descriptor?.Select || [];
+  const ds = result?.dsr?.DS?.[0];
+  const dmRows = (ds?.PH || []).flatMap((ph) => ph?.DM0 || []);
+  const rows = [];
+
+  dmRows.forEach((row) => {
+    const mapped = {};
+    selectMeta.forEach((sel, idx) => {
+      const outName = sel?.Name || `col_${idx}`;
+      const token = sel?.Value;
+      if (token && Object.prototype.hasOwnProperty.call(row, token)) {
+        mapped[outName] = row[token];
+      } else if (Array.isArray(row?.C)) {
+        mapped[outName] = row.C[idx];
+      } else {
+        mapped[outName] = null;
+      }
+    });
+    rows.push(mapped);
+  });
+
+  return rows;
+}
+
+function externalParsePowerBiLiteralYear(literalValue) {
+  const match = String(literalValue || "").match(/(\d{4})/);
+  return match ? Number(match[1]) : null;
+}
+
+function externalCollectPowerBiVisualConfigs(models) {
+  const sections = models?.exploration?.sections || [];
+  const visuals = [];
+  sections.forEach((section) => {
+    (section.visualContainers || []).forEach((container) => {
+      try {
+        const config = JSON.parse(container.config);
+        const query = config?.singleVisual?.prototypeQuery || null;
+        visuals.push({
+          sectionName: cleanText(section.displayName || section.name || ""),
+          visualType: cleanText(config?.singleVisual?.visualType || ""),
+          query
+        });
+      } catch {
+        // Ignora visuales con JSON invalido.
+      }
+    });
+  });
+  return visuals;
+}
+
+function externalFindSelectedYear(models) {
+  const visuals = externalCollectPowerBiVisualConfigs(models);
+  for (const visual of visuals) {
+    if (externalNormalizeMetricKey(visual.visualType) !== "slicer") continue;
+    const filter = visual?.query?.Where || [];
+    for (const item of filter) {
+      const prop = item?.Condition?.In?.Expressions?.[0]?.Column?.Property;
+      if (!externalNormalizeMetricKey(prop).includes("ano")) continue;
+      const literal = item?.Condition?.In?.Values?.[0]?.[0]?.Literal?.Value;
+      const year = externalParsePowerBiLiteralYear(literal);
+      if (Number.isFinite(year)) return year;
+    }
+  }
+  return null;
+}
+
+function externalFindEntities(models) {
+  const found = {
+    entityCaratulas: "Caratulas consolidado",
+    entityDates: "dim_Fechas",
+    entitySection: "Seccion CIIU",
+    entityMeasures: "Medidas",
+    propNit: "NIT",
+    propNitRazon: "Nit - Razon social",
+    propYear: "Ano",
+    propSectionDesc: "Seccion - Descripcion"
+  };
+
+  const visuals = externalCollectPowerBiVisualConfigs(models);
+  visuals.forEach((visual) => {
+    (visual?.query?.From || []).forEach((source) => {
+      const entity = cleanText(source?.Entity);
+      const normalized = externalNormalizeMetricKey(entity);
+      if (normalized.includes("caratulas consolidado")) found.entityCaratulas = entity;
+      if (normalized.includes("dim fechas") || normalized.includes("dim_fechas")) found.entityDates = entity;
+      if (normalized.includes("seccion ciiu")) found.entitySection = entity;
+      if (normalized === "medidas") found.entityMeasures = entity;
+    });
+    (visual?.query?.Select || []).forEach((sel) => {
+      const property = cleanText(sel?.Column?.Property);
+      const normalized = externalNormalizeMetricKey(property);
+      if (normalized === "nit") found.propNit = property;
+      if (normalized.includes("nit razon social")) found.propNitRazon = property;
+      if (normalized === "ano") found.propYear = property;
+      if (normalized.includes("seccion descripcion")) found.propSectionDesc = property;
+    });
+  });
+
+  return found;
+}
+
+function externalCollectMeasureProperties(models) {
+  const visuals = externalCollectPowerBiVisualConfigs(models);
+  const out = [];
+  visuals.forEach((visual) => {
+    (visual?.query?.Select || []).forEach((sel) => {
+      const prop = cleanText(sel?.Measure?.Property || "");
+      if (prop) out.push(prop);
+    });
+  });
+  return dedupeExternalMeasureProperties(out);
+}
+
+function dedupeExternalMeasureProperties(props) {
+  const seen = new Set();
+  const out = [];
+  (props || []).forEach((prop) => {
+    const normalized = externalNormalizeMetricKey(prop);
+    if (!normalized || normalized === "blank") return;
+    if (seen.has(normalized)) return;
+    seen.add(normalized);
+    out.push(prop);
+  });
+  return out;
+}
+
+function findExternalMeasureProperty(available, aliases) {
+  const items = (available || []).map((property) => ({
+    property,
+    norm: externalNormalizeMetricKey(property)
+  }));
+
+  let best = null;
+  (aliases || []).forEach((alias) => {
+    const aliasNorm = externalNormalizeMetricKey(alias);
+    if (!aliasNorm) return;
+    items.forEach((item) => {
+      if (!item.norm) return;
+      let score = -Infinity;
+      if (item.norm === aliasNorm) score = 200;
+      else if (item.norm.startsWith(aliasNorm)) score = 150 - Math.abs(item.norm.length - aliasNorm.length);
+      else if (item.norm.includes(aliasNorm)) score = 120 - Math.abs(item.norm.length - aliasNorm.length);
+      else if (aliasNorm.includes(item.norm)) score = 80 - Math.abs(item.norm.length - aliasNorm.length);
+      if (score === -Infinity) return;
+      if (!best || score > best.score) best = { score, property: item.property };
+    });
+  });
+
+  return best?.property || "";
+}
+
+function resolveExternalMeasureCatalog(available, defs) {
+  return (defs || [])
+    .map((def) => {
+      const property = findExternalMeasureProperty(available, def.aliases || []);
+      if (!property) return null;
+      return {
+        id: def.id,
+        label: def.label,
+        kind: externalMetricKind(def),
+        property
+      };
+    })
+    .filter(Boolean);
+}
+
+function externalParseAmount(raw) {
+  if (raw === null || raw === undefined) return null;
+  if (typeof raw === "number") return Number.isFinite(raw) ? raw : null;
+  let t = String(raw).trim();
+  if (!t) return null;
+  let neg = false;
+  if (t.startsWith("(") && t.endsWith(")")) {
+    neg = true;
+    t = t.slice(1, -1);
+  }
+  t = t.replace(/\s+/g, "").replace(/\$/g, "");
+  if (t.includes(",") && t.includes(".")) t = t.replace(/,/g, "");
+  else if (t.includes(",") && !t.includes(".")) t = t.replace(/,/g, ".");
+  t = t.replace(/[^0-9.-]/g, "");
+  if (!t || t === "-" || t === "." || t === "-.") return null;
+  const n = Number(t);
+  if (!Number.isFinite(n)) return null;
+  return neg ? -n : n;
+}
+
+async function getExternalPowerBiContext() {
+  if (externalPowerBiContextPromise) return externalPowerBiContextPromise;
+
+  externalPowerBiContextPromise = (async () => {
+    const reportHtml = await externalFetchTextWithRetry(EXTERNAL_PBI_CONFIG.reportUrl);
+    const viewUrl = externalExtractIframeSrc(reportHtml);
+    if (!viewUrl) throw new Error("No se encontro iframe Power BI del reporte externo.");
+
+    const resourceKey = externalExtractResourceKey(viewUrl);
+    if (!resourceKey) throw new Error("No se pudo extraer resource key del reporte externo.");
+
+    const embedHtml = await externalFetchTextWithRetry(viewUrl);
+    const clusterUri = externalExtractClusterUri(embedHtml);
+    if (!clusterUri) throw new Error("No se pudo resolver cluster de Power BI.");
+    const apiBase = externalBuildApiBase(clusterUri);
+
+    const models = await externalFetchJsonWithRetry(
+      `${apiBase}/public/reports/${resourceKey}/modelsAndExploration?preferReadOnlySession=true`,
+      { method: "GET", headers: externalPowerBiHeaders(resourceKey) }
+    );
+
+    const modelId = Number(models?.models?.[0]?.id);
+    if (!Number.isFinite(modelId)) throw new Error("No se encontro model id del reporte externo.");
+
+    const availableMeasureProps = externalCollectMeasureProperties(models);
+    const incomeMeasures = resolveExternalMeasureCatalog(availableMeasureProps, EXTERNAL_PBI_INCOME_MEASURE_DEFS);
+    const workingCapitalMeasures = resolveExternalMeasureCatalog(availableMeasureProps, EXTERNAL_PBI_WORKING_CAPITAL_MEASURE_DEFS);
+    const allMeasures = dedupeExternalMeasureProperties(
+      [...incomeMeasures, ...workingCapitalMeasures].map((measure) => measure.property)
+    );
+    if (!allMeasures.length) throw new Error("No se encontraron medidas financieras en el reporte externo.");
+
+    const propertyToDef = new Map();
+    [...incomeMeasures, ...workingCapitalMeasures].forEach((measure) => {
+      if (!propertyToDef.has(measure.property)) propertyToDef.set(measure.property, []);
+      propertyToDef.get(measure.property).push(measure);
+    });
+
+    return {
+      reportUrl: EXTERNAL_PBI_CONFIG.reportUrl,
+      viewUrl,
+      resourceKey,
+      apiBase,
+      modelId,
+      selectedYear: externalFindSelectedYear(models),
+      entities: externalFindEntities(models),
+      incomeMeasures,
+      workingCapitalMeasures,
+      allMeasures,
+      propertyToDef
+    };
+  })();
+
+  try {
+    return await externalPowerBiContextPromise;
+  } catch (error) {
+    externalPowerBiContextPromise = null;
+    throw error;
+  }
+}
+
+function buildExternalPowerBiCompanyQueryBody(ctx, nit, year) {
+  const select = ctx.allMeasures.map((property, idx) => ({
+    id: `metric_${idx}`,
+    property
+  }));
+
+  return {
+    ModelId: ctx.modelId,
+    SemanticQueryDataShapeCommands: [
+      {
+        Query: {
+          Version: 2,
+          From: [
+            { Name: "m", Entity: ctx.entities.entityMeasures, Type: 0 },
+            { Name: "c", Entity: ctx.entities.entityCaratulas, Type: 0 },
+            { Name: "d", Entity: ctx.entities.entityDates, Type: 0 },
+            { Name: "s", Entity: ctx.entities.entitySection, Type: 0 }
+          ],
+          Select: select.map((entry) => ({
+            Measure: { Expression: { SourceRef: { Source: "m" } }, Property: entry.property },
+            Name: entry.id
+          })),
+          Where: [
+            {
+              Condition: {
+                In: {
+                  Expressions: [{ Column: { Expression: { SourceRef: { Source: "c" } }, Property: ctx.entities.propNit } }],
+                  Values: [[{ Literal: { Value: `'${nit}'` } }]]
+                }
+              }
+            },
+            {
+              Condition: {
+                In: {
+                  Expressions: [{ Column: { Expression: { SourceRef: { Source: "d" } }, Property: ctx.entities.propYear } }],
+                  Values: [[{ Literal: { Value: `${year}L` } }]]
+                }
+              }
+            },
+            {
+              Condition: {
+                Not: {
+                  Expression: {
+                    In: {
+                      Expressions: [{ Column: { Expression: { SourceRef: { Source: "c" } }, Property: ctx.entities.propNitRazon } }],
+                      Values: [[{ Literal: { Value: "null" } }]]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              Condition: {
+                Not: {
+                  Expression: {
+                    In: {
+                      Expressions: [{ Column: { Expression: { SourceRef: { Source: "s" } }, Property: ctx.entities.propSectionDesc } }],
+                      Values: [[{ Literal: { Value: "null" } }]]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        Binding: {
+          Primary: { Groupings: [{ Projections: select.map((_, idx) => idx) }] },
+          SuppressedJoinPredicates: [1],
+          Version: 1
+        },
+        ExecutionMetricsKind: 1
+      }
+    ]
+  };
+}
+
+async function fetchExternalPowerBiMetricsByYear(ctx, nit, year) {
+  const cacheKey = `${ctx.resourceKey}|${nit}|${year}`;
+  if (externalPowerBiYearCache.has(cacheKey)) return externalPowerBiYearCache.get(cacheKey);
+
+  const body = buildExternalPowerBiCompanyQueryBody(ctx, nit, year);
+  const raw = await externalPowerBiQuery(ctx.apiBase, ctx.resourceKey, body);
+  const row = externalParsePowerBiRows(raw)?.[0] || {};
+  const mapped = {};
+  ctx.allMeasures.forEach((property, idx) => {
+    const value = externalParseAmount(row?.[`metric_${idx}`]);
+    mapped[property] = Number.isFinite(value) ? value : null;
+  });
+  externalPowerBiYearCache.set(cacheKey, mapped);
+  return mapped;
+}
+
+function externalHasFiniteMetrics(row) {
+  if (!row || typeof row !== "object") return false;
+  return Object.values(row).some((value) => Number.isFinite(value));
+}
+
+async function fetchExternalPowerBiCompanyPayload(nit, years) {
+  const ctx = await getExternalPowerBiContext();
+  const yearList = years.length
+    ? years
+    : [Number.isFinite(ctx.selectedYear) ? ctx.selectedYear : (new Date().getFullYear() - 1)];
+  const selectedYears = [...new Set(yearList)]
+    .filter((y) => Number.isFinite(y) && y >= 1990 && y <= 2100)
+    .sort((a, b) => b - a)
+    .slice(0, EXTERNAL_PBI_CONFIG.maxYears);
+
+  const byYearIncome = {};
+  const byYearWorkingCapital = {};
+
+  for (const year of selectedYears) {
+    const raw = await fetchExternalPowerBiMetricsByYear(ctx, nit, year);
+    const incomeRow = {};
+    ctx.incomeMeasures.forEach((measure) => {
+      incomeRow[measure.id] = Number.isFinite(raw?.[measure.property]) ? raw[measure.property] : null;
+    });
+    const wkRow = {};
+    ctx.workingCapitalMeasures.forEach((measure) => {
+      wkRow[measure.id] = Number.isFinite(raw?.[measure.property]) ? raw[measure.property] : null;
+    });
+    byYearIncome[year] = incomeRow;
+    byYearWorkingCapital[year] = wkRow;
+  }
+
+  const incomeHasData = Object.values(byYearIncome).some((row) => externalHasFiniteMetrics(row));
+  const wkHasData = Object.values(byYearWorkingCapital).some((row) => externalHasFiniteMetrics(row));
+
+  return {
+    ok: true,
+    source: "estrategiaenaccion_powerbi",
+    report_url: ctx.reportUrl,
+    view_url: ctx.viewUrl,
+    fetched_at: new Date().toISOString(),
+    selected_year: Number.isFinite(ctx.selectedYear) ? ctx.selectedYear : null,
+    company: { nit },
+    years: selectedYears,
+    income: {
+      has_data: incomeHasData,
+      measures: ctx.incomeMeasures.map((measure) => ({
+        id: measure.id,
+        label: measure.label,
+        kind: measure.kind,
+        property: measure.property
+      })),
+      by_year: byYearIncome
+    },
+    working_capital: {
+      has_data: wkHasData,
+      measures: ctx.workingCapitalMeasures.map((measure) => ({
+        id: measure.id,
+        label: measure.label,
+        kind: measure.kind,
+        property: measure.property
+      })),
+      by_year: byYearWorkingCapital
+    }
+  };
 }
 
 function startAdvisorServer() {
